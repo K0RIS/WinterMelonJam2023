@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjpfhk24pvsg2"]
+
+[ext_resource type="Script" path="res://assets/scripts/Player.gd" id="1_7dipb"]
+[ext_resource type="Texture2D" uid="uid://cuvq7up0uk2f8" path="res://assets/icon.svg" id="2_3jt1k"]
+[ext_resource type="PackedScene" uid="uid://bmiuichhpkbl6" path="res://assets/scenes/RhythmGame.tscn" id="3_cg5vr"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_7dipb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3jt1k")
+
+[node name="RhythmGame" parent="." instance=ExtResource("3_cg5vr")]
+position = Vector2(50, -50)

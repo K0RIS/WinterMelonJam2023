@@ -21,9 +21,12 @@ script = ExtResource("3_mup7y")
 
 [node name="Lanes" type="HFlowContainer" parent="ArrowRig"]
 layout_mode = 1
-offset_left = 1357.0
-offset_right = 1924.0
-offset_bottom = 1633.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -400.0
+offset_right = 567.0
+grow_vertical = 0
 
 [node name="Lane1" type="VFlowContainer" parent="ArrowRig/Lanes"]
 custom_minimum_size = Vector2(50, 400)

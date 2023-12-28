@@ -1,34 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bvvn2bewsv4yx"]
 
-[ext_resource type="PackedScene" uid="uid://bmiuichhpkbl6" path="res://assets/scenes/RhythmGame.tscn" id="1_qpmfg"]
-[ext_resource type="PackedScene" uid="uid://db2jd3rxd4143" path="res://assets/scenes/score_manager.tscn" id="2_dasm7"]
-[ext_resource type="PackedScene" uid="uid://bhxkei2pdkkou" path="res://assets/scenes/evivorenmental_areas.tscn" id="3_5a8ir"]
+[ext_resource type="PackedScene" uid="uid://bjpfhk24pvsg2" path="res://assets/scenes/Player.tscn" id="2_l7aqk"]
 
 [node name="Debug" type="Node2D"]
 
-[node name="RhythmGame" parent="." instance=ExtResource("1_qpmfg")]
-
-[node name="ScoreManager" parent="." instance=ExtResource("2_dasm7")]
-position = Vector2(378, 290)
-
-[node name="Score" parent="ScoreManager/Ui" index="0"]
-anchors_preset = 15
-offset_left = 264.0
-offset_top = -6.0
-offset_right = -910.0
-offset_bottom = -886.0
-
-[node name="Status" parent="ScoreManager/Ui" index="1"]
-anchors_preset = 15
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
-
-[node name="Evivorenmental Areas" parent="." instance=ExtResource("3_5a8ir")]
-position = Vector2(608, 551)
-
-[connection signal="AddPoints" from="RhythmGame/ArrowRig" to="ScoreManager" method="_on_arrow_rig_add_points"]
-[connection signal="MissedNote" from="RhythmGame/ArrowRig" to="ScoreManager" method="_on_arrow_rig_missed_note"]
-
-[editable path="RhythmGame"]
-[editable path="ScoreManager"]
+[node name="Player" parent="." instance=ExtResource("2_l7aqk")]
+position = Vector2(692, 675)
