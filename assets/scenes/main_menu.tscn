@@ -1,0 +1,197 @@
+[gd_scene load_steps=14 format=3 uid="uid://4cg6iwwe7j6k"]
+
+[ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_m3phr"]
+[ext_resource type="Texture2D" uid="uid://dv1pdie8igfsf" path="res://assets/UiAsset/cyan_square_30.png" id="2_1onor"]
+[ext_resource type="Texture2D" uid="uid://dc6tibj77kmvf" path="res://assets/UiAsset/cyan_pressed_square_29.png" id="3_76isd"]
+[ext_resource type="Texture2D" uid="uid://ca8yhvr7ribg" path="res://assets/UiAsset/cyan_square_7.png" id="4_llu73"]
+[ext_resource type="Texture2D" uid="uid://b7o72dlxkxxn" path="res://assets/UiAsset/cyan_pressed_square_6.png" id="5_b7ybk"]
+[ext_resource type="Script" path="res://assets/scripts/Settings Ui.gd" id="6_hpvos"]
+[ext_resource type="Texture2D" uid="uid://dplk4kucvjwiy" path="res://assets/UiAsset/cyan_square_3.png" id="7_yaxq6"]
+[ext_resource type="Texture2D" uid="uid://b6brbbhb8byv2" path="res://assets/UiAsset/cyan_pressed_square_2.png" id="8_3v8t0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o0cre"]
+
+[sub_resource type="Animation" id="Animation_scoy6"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_oo7u1"]
+resource_name = "ShowMain"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Settings Ui:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenmuButtons:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sjnvu"]
+resource_name = "ShowSettings"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenmuButtons:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Settings Ui:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u3gk4"]
+_data = {
+"RESET": SubResource("Animation_scoy6"),
+"ShowMain": SubResource("Animation_oo7u1"),
+"ShowSettings": SubResource("Animation_sjnvu")
+}
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_m3phr")
+
+[node name="MainMenmuButtons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="TextureButton" parent="MainMenmuButtons"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 534.0
+offset_top = 650.0
+offset_right = -1306.0
+offset_bottom = -350.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture_normal = ExtResource("2_1onor")
+texture_pressed = ExtResource("3_76isd")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="Settings" type="TextureButton" parent="MainMenmuButtons"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1063.0
+offset_top = 650.0
+offset_right = -777.0
+offset_bottom = -350.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture_normal = ExtResource("4_llu73")
+texture_pressed = ExtResource("5_b7ybk")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="Settings Ui" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_hpvos")
+
+[node name="SettingsBackGround" type="ColorRect" parent="Settings Ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.72549, 0.278431, 0.666667, 1)
+
+[node name="Back" type="TextureButton" parent="Settings Ui"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 810.0
+offset_top = 694.0
+offset_right = 849.0
+offset_bottom = 732.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture_normal = ExtResource("7_yaxq6")
+texture_pressed = ExtResource("8_3v8t0")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings Ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 373.0
+offset_top = 185.0
+offset_right = -487.0
+offset_bottom = -778.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Settings Ui/VBoxContainer"]
+layout_mode = 2
+text = "Music"
+
+[node name="Music" type="HSlider" parent="Settings Ui/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_o0cre")
+min_value = -30.0
+max_value = 0.0
+
+[node name="Sound" type="Label" parent="Settings Ui/VBoxContainer"]
+layout_mode = 2
+text = "VFX"
+
+[node name="Music2" type="HSlider" parent="Settings Ui/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_o0cre")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u3gk4")
+}
+
+[connection signal="pressed" from="MainMenmuButtons/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MainMenmuButtons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Settings Ui/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Settings Ui/VBoxContainer/Music" to="Settings Ui" method="_on_music_value_changed"]
