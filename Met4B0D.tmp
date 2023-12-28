@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://c87gox1k5pcco"]
+
+[ext_resource type="Script" path="res://MeterManager.gd" id="1_vkter"]
+[ext_resource type="Script" path="res://SnakeMeter.gd" id="2_fug51"]
+[ext_resource type="Script" path="res://CharmMeter2.gd" id="3_ujs7p"]
+[ext_resource type="Script" path="res://PlaceHolder.gd" id="4_672uf"]
+
+[node name="Meters" type="CanvasLayer"]
+
+[node name="MeterManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vkter")
+
+[node name="SnakeMeter" type="ProgressBar" parent="MeterManager"]
+layout_mode = 2
+offset_left = 504.0
+offset_right = 859.0
+offset_bottom = 47.0
+rounded = true
+script = ExtResource("2_fug51")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="MeterManager/SnakeMeter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Snake"
+
+[node name="CharmMeter" type="ProgressBar" parent="MeterManager"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 357.0
+offset_bottom = 47.0
+rounded = true
+script = ExtResource("3_ujs7p")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="MeterManager/CharmMeter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Charm"
+metadata/_edit_group_ = true
+
+[node name="PlaceHolder" type="ProgressBar" parent="MeterManager"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 129.0
+offset_right = 357.0
+offset_bottom = 176.0
+rounded = true
+script = ExtResource("4_672uf")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="MeterManager/PlaceHolder"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Place Holder"
+metadata/_edit_group_ = true
+
+[connection signal="ChangeCharmMeter" from="MeterManager" to="MeterManager/CharmMeter" method="_on_meter_manager_change_charm_meter"]
+[connection signal="ChangeOtherMeter" from="MeterManager" to="MeterManager/PlaceHolder" method="_on_meter_manager_change_other_meter"]
+[connection signal="ChangeSnakeMeter" from="MeterManager" to="MeterManager/SnakeMeter" method="_on_meter_manager_change_snake_meter"]
