@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://2oh3gfmvswml"]
 
-[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_28hq0"]
+[ext_resource type="Script" path="res://assets/scripts/CharacterBody2D.gd" id="1_28hq0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ul8e"]
 

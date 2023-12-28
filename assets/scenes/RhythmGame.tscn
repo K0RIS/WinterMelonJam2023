@@ -10,6 +10,7 @@ script = ExtResource("1_0l3ip")
 
 [node name="SongTrack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_imu0c")
+autoplay = true
 
 [node name="FluteTrack" type="AudioStreamPlayer2D" parent="."]
 
@@ -20,7 +21,8 @@ script = ExtResource("3_mup7y")
 
 [node name="Lanes" type="HFlowContainer" parent="ArrowRig"]
 layout_mode = 1
-offset_right = 567.0
+offset_left = 1357.0
+offset_right = 1924.0
 offset_bottom = 1633.0
 
 [node name="Lane1" type="VFlowContainer" parent="ArrowRig/Lanes"]

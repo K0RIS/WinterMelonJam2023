@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://bhxkei2pdkkou"]
 
-[ext_resource type="Script" path="res://evivorenmental_areas.gd" id="1_5jqgn"]
-[ext_resource type="PackedScene" uid="uid://2oh3gfmvswml" path="res://snake_charmer.tscn" id="2_wm0v0"]
-[ext_resource type="PackedScene" uid="uid://c87gox1k5pcco" path="res://MeterUi.tscn" id="3_7dcnp"]
+[ext_resource type="Script" path="res://assets/scripts/evivorenmental_areas.gd" id="1_au6yv"]
+[ext_resource type="PackedScene" uid="uid://2oh3gfmvswml" path="res://assets/scenes/snake_charmer.tscn" id="2_dtkqx"]
+[ext_resource type="PackedScene" uid="uid://c87gox1k5pcco" path="res://assets/scenes/MeterUi.tscn" id="3_lfup4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k3a8"]
 
 [node name="Evivorenmental Areas" type="Node2D"]
 position = Vector2(171, 100)
-script = ExtResource("1_5jqgn")
+script = ExtResource("1_au6yv")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(373, 279)
@@ -36,9 +36,15 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area 3"]
 shape = SubResource("RectangleShape2D_4k3a8")
 
-[node name="SnakeCharmer" parent="Node2D" instance=ExtResource("2_wm0v0")]
+[node name="SnakeCharmer" parent="Node2D" instance=ExtResource("2_dtkqx")]
 
-[node name="Meters" parent="." instance=ExtResource("3_7dcnp")]
+[node name="Meters" parent="." instance=ExtResource("3_lfup4")]
+
+[node name="MeterManager" parent="Meters" index="0"]
+offset_left = 1546.0
+offset_top = 555.0
+offset_right = -19.0
+offset_bottom = -105.0
 
 [node name="SnakeMeter" parent="Meters/MeterManager" index="0"]
 max_value = 10.0

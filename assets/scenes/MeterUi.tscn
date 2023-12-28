@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://c87gox1k5pcco"]
 
-[ext_resource type="Script" path="res://MeterManager.gd" id="1_vkter"]
-[ext_resource type="Script" path="res://SnakeMeter.gd" id="2_fug51"]
-[ext_resource type="Script" path="res://CharmMeter2.gd" id="3_ujs7p"]
-[ext_resource type="Script" path="res://PlaceHolder.gd" id="4_672uf"]
+[ext_resource type="Script" path="res://assets/scripts/MeterManager.gd" id="1_vkter"]
+[ext_resource type="Script" path="res://assets/scripts/SnakeMeter.gd" id="2_fug51"]
+[ext_resource type="Script" path="res://assets/scripts/CharmMeter2.gd" id="3_ujs7p"]
+[ext_resource type="Script" path="res://assets/scripts/PlaceHolder.gd" id="4_672uf"]
 
 [node name="Meters" type="CanvasLayer"]
 
@@ -18,9 +18,10 @@ script = ExtResource("1_vkter")
 
 [node name="SnakeMeter" type="ProgressBar" parent="MeterManager"]
 layout_mode = 2
-offset_left = 504.0
-offset_right = 859.0
-offset_bottom = 47.0
+offset_left = 2.0
+offset_top = 360.0
+offset_right = 357.0
+offset_bottom = 407.0
 rounded = true
 script = ExtResource("2_fug51")
 metadata/_edit_group_ = true
@@ -36,9 +37,9 @@ text = "Snake"
 
 [node name="CharmMeter" type="ProgressBar" parent="MeterManager"]
 layout_mode = 0
-offset_left = 2.0
-offset_right = 357.0
-offset_bottom = 47.0
+offset_top = 257.0
+offset_right = 355.0
+offset_bottom = 304.0
 rounded = true
 script = ExtResource("3_ujs7p")
 metadata/_edit_group_ = true

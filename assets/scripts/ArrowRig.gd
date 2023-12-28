@@ -15,10 +15,13 @@ const DEATH_OFFSET = -50 #pixels off of target a note will be before it is a mis
 @onready var lane_target_4 = $Lanes/Lane4/Target
 
 var _spawn_dist: float = 0
+signal  AddPoints(Dist)
+signal  MissedNote
 
 func _physics_process(delta):
 	for note in get_tree().get_nodes_in_group("note"):
 		if (get_note_dist(note) < DEATH_OFFSET):
+			emit_signal("MissedNote")
 			note.queue_free()
 
 func _input(event):
@@ -46,7 +49,7 @@ func _input(event):
 
 func check_accuracy(note: Note):
 	var dist = get_note_dist(note)
-
+	emit_signal("AddPoints",dist)
 	note.queue_free()
 
 

@@ -19,7 +19,7 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis("Left_Player", "Right_Player")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
@@ -30,7 +30,7 @@ func _physics_process(delta):
 
 func _on_hit_box_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	CurrentArea = area.name
-	print(area.name)
+	
 	
 func _on_hit_box_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	CurrentArea = "None"

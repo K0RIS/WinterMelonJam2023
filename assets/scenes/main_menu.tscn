@@ -1,13 +1,13 @@
 [gd_scene load_steps=14 format=3 uid="uid://4cg6iwwe7j6k"]
 
-[ext_resource type="Script" path="res://main_menu.gd" id="1_qv5ny"]
-[ext_resource type="Texture2D" uid="uid://dv1pdie8igfsf" path="res://assets/UiAsset/cyan_square_30.png" id="2_jibv0"]
-[ext_resource type="Script" path="res://Settings Ui.gd" id="2_xrj0n"]
-[ext_resource type="Texture2D" uid="uid://dc6tibj77kmvf" path="res://assets/UiAsset/cyan_pressed_square_29.png" id="3_1w7d0"]
-[ext_resource type="Texture2D" uid="uid://ca8yhvr7ribg" path="res://assets/UiAsset/cyan_square_7.png" id="4_ba26a"]
-[ext_resource type="Texture2D" uid="uid://b7o72dlxkxxn" path="res://assets/UiAsset/cyan_pressed_square_6.png" id="5_16oci"]
-[ext_resource type="Texture2D" uid="uid://dplk4kucvjwiy" path="res://assets/UiAsset/cyan_square_3.png" id="7_jq52a"]
-[ext_resource type="Texture2D" uid="uid://b6brbbhb8byv2" path="res://assets/UiAsset/cyan_pressed_square_2.png" id="8_xlmbf"]
+[ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_m3phr"]
+[ext_resource type="Texture2D" uid="uid://dv1pdie8igfsf" path="res://assets/UiAsset/cyan_square_30.png" id="2_1onor"]
+[ext_resource type="Texture2D" uid="uid://dc6tibj77kmvf" path="res://assets/UiAsset/cyan_pressed_square_29.png" id="3_76isd"]
+[ext_resource type="Texture2D" uid="uid://ca8yhvr7ribg" path="res://assets/UiAsset/cyan_square_7.png" id="4_llu73"]
+[ext_resource type="Texture2D" uid="uid://b7o72dlxkxxn" path="res://assets/UiAsset/cyan_pressed_square_6.png" id="5_b7ybk"]
+[ext_resource type="Script" path="res://assets/scripts/Settings Ui.gd" id="6_hpvos"]
+[ext_resource type="Texture2D" uid="uid://dplk4kucvjwiy" path="res://assets/UiAsset/cyan_square_3.png" id="7_yaxq6"]
+[ext_resource type="Texture2D" uid="uid://b6brbbhb8byv2" path="res://assets/UiAsset/cyan_pressed_square_2.png" id="8_3v8t0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o0cre"]
 
@@ -76,7 +76,7 @@ _data = {
 }
 
 [node name="MainMenu" type="CanvasLayer"]
-script = ExtResource("1_qv5ny")
+script = ExtResource("1_m3phr")
 
 [node name="MainMenmuButtons" type="Control" parent="."]
 layout_mode = 3
@@ -85,7 +85,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Start" type="TextureButton" parent="MainMenmuButtons"]
 texture_filter = 1
@@ -93,15 +92,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 387.0
-offset_top = 432.0
-offset_right = -726.0
-offset_bottom = -177.0
+offset_left = 534.0
+offset_top = 650.0
+offset_right = -1306.0
+offset_bottom = -350.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
-texture_normal = ExtResource("2_jibv0")
-texture_pressed = ExtResource("3_1w7d0")
+texture_normal = ExtResource("2_1onor")
+texture_pressed = ExtResource("3_76isd")
 stretch_mode = 4
 metadata/_edit_group_ = true
 
@@ -111,15 +110,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 629.0
-offset_top = 432.0
-offset_right = -484.0
-offset_bottom = -177.0
+offset_left = 1063.0
+offset_top = 650.0
+offset_right = -777.0
+offset_bottom = -350.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
-texture_normal = ExtResource("4_ba26a")
-texture_pressed = ExtResource("5_16oci")
+texture_normal = ExtResource("4_llu73")
+texture_pressed = ExtResource("5_b7ybk")
 stretch_mode = 4
 metadata/_edit_group_ = true
 
@@ -131,7 +130,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_xrj0n")
+script = ExtResource("6_hpvos")
 
 [node name="SettingsBackGround" type="ColorRect" parent="Settings Ui"]
 layout_mode = 1
@@ -145,15 +144,15 @@ color = Color(0.72549, 0.278431, 0.666667, 1)
 [node name="Back" type="TextureButton" parent="Settings Ui"]
 texture_filter = 1
 layout_mode = 2
-offset_left = 470.0
-offset_top = 394.0
-offset_right = 509.0
-offset_bottom = 432.0
+offset_left = 810.0
+offset_top = 694.0
+offset_right = 849.0
+offset_bottom = 732.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
-texture_normal = ExtResource("7_jq52a")
-texture_pressed = ExtResource("8_xlmbf")
+texture_normal = ExtResource("7_yaxq6")
+texture_pressed = ExtResource("8_3v8t0")
 stretch_mode = 4
 metadata/_edit_group_ = true
 
@@ -162,10 +161,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 387.0
-offset_top = 80.0
-offset_right = -473.0
-offset_bottom = -397.0
+offset_left = 373.0
+offset_top = 185.0
+offset_right = -487.0
+offset_bottom = -778.0
 grow_horizontal = 2
 grow_vertical = 2
 
