@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvvn2bewsv4yx"]
+
+[ext_resource type="PackedScene" uid="uid://bmiuichhpkbl6" path="res://assets/scenes/RhythmGame.tscn" id="1_qpmfg"]
+
+[node name="Debug" type="Node2D"]
+
+[node name="RhythmGame" parent="." instance=ExtResource("1_qpmfg")]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://k3uboy304rg2"]
+
+[ext_resource type="Texture2D" uid="uid://cuvq7up0uk2f8" path="res://assets/icon.svg" id="1_wevyn"]
+[ext_resource type="Script" path="res://assets/scripts/Note.gd" id="2_6msk5"]
+
+[node name="Note" type="Node2D" groups=["note"]]
+script = ExtResource("2_6msk5")
+
+[node name="NoteTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_right = 25.0
+offset_bottom = 50.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_wevyn")
+expand_mode = 5

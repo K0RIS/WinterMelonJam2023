@@ -1,0 +1,115 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmiuichhpkbl6"]
+
+[ext_resource type="Script" path="res://assets/scripts/RhythmGame.gd" id="1_0l3ip"]
+[ext_resource type="AudioStream" uid="uid://dnseffipfenh2" path="res://assets/sound/music/TestTrack.ogg" id="2_imu0c"]
+[ext_resource type="Script" path="res://assets/scripts/ArrowRig.gd" id="3_mup7y"]
+[ext_resource type="Texture2D" uid="uid://cuvq7up0uk2f8" path="res://assets/icon.svg" id="3_omj4i"]
+
+[node name="RhythmGame" type="Node2D"]
+script = ExtResource("1_0l3ip")
+
+[node name="SongTrack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_imu0c")
+
+[node name="FluteTrack" type="AudioStreamPlayer2D" parent="."]
+
+[node name="ArrowRig" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("3_mup7y")
+
+[node name="Lanes" type="HFlowContainer" parent="ArrowRig"]
+layout_mode = 1
+offset_right = 567.0
+offset_bottom = 1633.0
+
+[node name="Lane1" type="VFlowContainer" parent="ArrowRig/Lanes"]
+custom_minimum_size = Vector2(50, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Target" type="TextureRect" parent="ArrowRig/Lanes/Lane1"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("3_omj4i")
+expand_mode = 5
+
+[node name="SpawnAnchor" type="Control" parent="ArrowRig/Lanes/Lane1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="Spawn" type="Node2D" parent="ArrowRig/Lanes/Lane1/SpawnAnchor"]
+
+[node name="Sep1" type="VSeparator" parent="ArrowRig/Lanes"]
+layout_mode = 2
+
+[node name="Lane2" type="VFlowContainer" parent="ArrowRig/Lanes"]
+custom_minimum_size = Vector2(50, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Target" type="TextureRect" parent="ArrowRig/Lanes/Lane2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_omj4i")
+expand_mode = 5
+
+[node name="SpawnAnchor" type="Control" parent="ArrowRig/Lanes/Lane2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="Spawn" type="Node2D" parent="ArrowRig/Lanes/Lane2/SpawnAnchor"]
+
+[node name="Sep2" type="VSeparator" parent="ArrowRig/Lanes"]
+layout_mode = 2
+
+[node name="Lane3" type="VFlowContainer" parent="ArrowRig/Lanes"]
+custom_minimum_size = Vector2(50, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Target" type="TextureRect" parent="ArrowRig/Lanes/Lane3"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("3_omj4i")
+expand_mode = 5
+
+[node name="SpawnAnchor" type="Control" parent="ArrowRig/Lanes/Lane3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="Spawn" type="Node2D" parent="ArrowRig/Lanes/Lane3/SpawnAnchor"]
+
+[node name="Sep3" type="VSeparator" parent="ArrowRig/Lanes"]
+layout_mode = 2
+
+[node name="Lane4" type="VFlowContainer" parent="ArrowRig/Lanes"]
+custom_minimum_size = Vector2(50, 400)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Target" type="TextureRect" parent="ArrowRig/Lanes/Lane4"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = ExtResource("3_omj4i")
+expand_mode = 5
+
+[node name="SpawnAnchor" type="Control" parent="ArrowRig/Lanes/Lane4"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="Spawn" type="Node2D" parent="ArrowRig/Lanes/Lane4/SpawnAnchor"]
+
+[connection signal="beat" from="." to="." method="_on_beat"]
