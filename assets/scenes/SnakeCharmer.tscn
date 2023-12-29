@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvbr3f3sf14b3"]
+
+[ext_resource type="Script" path="res://assets/scripts/Player.gd" id="1_7u2cq"]
+[ext_resource type="PackedScene" uid="uid://bmiuichhpkbl6" path="res://assets/scenes/RhythmGame.tscn" id="2_mo0dp"]
+[ext_resource type="Texture2D" uid="uid://cuvq7up0uk2f8" path="res://assets/icon.svg" id="3_vl6t2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ul8e"]
+radius = 65.0
+height = 130.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x20p6"]
+size = Vector2(125, 125)
+
+[node name="SnakeCharmer" type="CharacterBody2D"]
+script = ExtResource("1_7u2cq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6ul8e")
+debug_color = Color(0, 0.709804, 0.827451, 0.419608)
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_x20p6")
+debug_color = Color(0.85098, 0.25098, 0.690196, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="RhythmGame" parent="." instance=ExtResource("2_mo0dp")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_vl6t2")
+
+[connection signal="area_shape_entered" from="HitBox" to="." method="_on_hit_box_area_shape_entered"]
+[connection signal="area_shape_exited" from="HitBox" to="." method="_on_hit_box_area_shape_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

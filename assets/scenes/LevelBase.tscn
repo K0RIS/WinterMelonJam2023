@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://d10fviu00m7jp"]
+
+[ext_resource type="Script" path="res://assets/scripts/LevelBase.gd" id="1_02c7m"]
+[ext_resource type="PackedScene" uid="uid://cvbr3f3sf14b3" path="res://assets/scenes/SnakeCharmer.tscn" id="3_mo7sc"]
+[ext_resource type="PackedScene" uid="uid://dl8tbmqlmed3s" path="res://assets/scenes/EnvironmentalAreas.tscn" id="4_05wpu"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vlu4"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_70fy5"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5b6te"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mvwt3"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_02c7m")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(960, 540)
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="Boundaries" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundaries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_6vlu4")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(0, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_70fy5")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(960, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D3"]
+shape = SubResource("WorldBoundaryShape2D_5b6te")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(0, 490)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D4"]
+shape = SubResource("WorldBoundaryShape2D_mvwt3")
+
+[node name="EnvironmentalAreas" parent="." instance=ExtResource("4_05wpu")]
+
+[node name="SnakeCharmer" parent="." instance=ExtResource("3_mo7sc")]
+position = Vector2(348, 460)
+
+[editable path="EnvironmentalAreas"]
+[editable path="SnakeCharmer"]
+[editable path="SnakeCharmer/RhythmGame"]
