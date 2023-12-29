@@ -11,12 +11,11 @@ func _on_snake_meter_bar_empty():
 
 
 func _on_charm_meter_bar_empty():
-	pass # Replace with function body.
+	$RockThrower.StartTimer()
 
 
 func _on_place_holder_bar_empty():
-	pass # Replace with function body.
-
+	$RockThrower2.StartTimer()
 
 func _on_snake_meter_value_changed(value):
 	var target = int(((value)/100)*7) + 1
@@ -53,3 +52,15 @@ func _on_placeholder_area_body_entered(body):
 
 func _on_placeholder_area_body_exited(body):
 	placeholder_meter.has_player = false
+
+
+func _on_snake_meter_bar_not_empty():
+	pass # Replace with function body.
+
+
+func _on_charm_meter_bar_not_empty():
+	$RockThrower.StopTimer() # 
+
+
+func _on_placeholder_meter_bar_not_empty():
+	$RockThrower2.StopTimer()

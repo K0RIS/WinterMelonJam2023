@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqwg4678k7u0u"]
 
-[ext_resource type="Script" path="res://assets/Crowd.gd" id="1_0ww7j"]
+[ext_resource type="Script" path="res://assets/sprites/Crowd.gd" id="1_0ww7j"]
 [ext_resource type="PackedScene" uid="uid://dms01mahnn4ma" path="res://assets/scenes/rock.tscn" id="2_lf18x"]
 
 [node name="RockThrower" type="Node2D"]

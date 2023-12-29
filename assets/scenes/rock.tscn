@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dms01mahnn4ma"]
+[gd_scene load_steps=4 format=3 uid="uid://dms01mahnn4ma"]
 
 [ext_resource type="Script" path="res://assets/scripts/rock.gd" id="1_lkiy0"]
-[ext_resource type="Script" path="res://assets/Crowd.gd" id="2_rs43l"]
 [ext_resource type="Texture2D" uid="uid://cuvq7up0uk2f8" path="res://assets/icon.svg" id="3_udtbt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fjk73"]
@@ -11,7 +10,8 @@ radius = 79.05
 script = ExtResource("1_lkiy0")
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("2_rs43l")
+collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_fjk73")

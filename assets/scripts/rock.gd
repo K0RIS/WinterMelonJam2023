@@ -11,7 +11,7 @@ var gravity: float = 1000
 func _process(delta):
 	velocity.y += gravity * delta
 	position += velocity * delta
-	rotation = velocity.angle()
+	#rotation = velocity.angle()
 
 
 
