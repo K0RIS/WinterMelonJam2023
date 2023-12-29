@@ -33,23 +33,29 @@ func _on_place_holder_value_changed(value):
 
 
 func _on_snake_area_body_entered(body):
-	snake_meter.has_player = true
+	if body is SnakeCharmer:
+		snake_meter.has_player = true
 
 
 func _on_snake_area_body_exited(body):
-	snake_meter.has_player = false
+	if body is SnakeCharmer:
+		snake_meter.has_player = false
 
 func _on_crowd_area_body_entered(body):
-	charm_meter.has_player = true
+	if body is SnakeCharmer:
+		charm_meter.has_player = true
 
 
 func _on_crowd_area_body_exited(body):
-	charm_meter.has_player = false
+	if body is SnakeCharmer:
+		charm_meter.has_player = false
 
 
 func _on_placeholder_area_body_entered(body):
-	placeholder_meter.has_player = true
+	if body is SnakeCharmer:
+		placeholder_meter.has_player = true
 
 
 func _on_placeholder_area_body_exited(body):
-	placeholder_meter.has_player = false
+	if body is SnakeCharmer:
+		placeholder_meter.has_player = false
