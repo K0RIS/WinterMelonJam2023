@@ -16,7 +16,7 @@ func _process(delta):
 
 
 func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	print("Player Got hit")
+	pass
 
 
 func _on_timer_timeout():

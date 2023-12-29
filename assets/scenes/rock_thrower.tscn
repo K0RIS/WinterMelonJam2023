@@ -1,14 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqwg4678k7u0u"]
+[gd_scene load_steps=4 format=3 uid="uid://dqwg4678k7u0u"]
 
 [ext_resource type="Script" path="res://assets/sprites/Crowd.gd" id="1_0ww7j"]
 [ext_resource type="PackedScene" uid="uid://dms01mahnn4ma" path="res://assets/scenes/rock.tscn" id="2_lf18x"]
+[ext_resource type="AudioStream" uid="uid://b8rt1bjkl7igt" path="res://assets/sound/SoundEffects/Rock_Throw.wav" id="3_5yxbc"]
 
 [node name="RockThrower" type="Node2D"]
+position = Vector2(106, 88)
 script = ExtResource("1_0ww7j")
 Rock = ExtResource("2_lf18x")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5yxbc")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

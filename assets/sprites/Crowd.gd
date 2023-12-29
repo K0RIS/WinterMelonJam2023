@@ -9,13 +9,15 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Timer.start()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 
 func shoot():
+	$AudioStreamPlayer.play()
 	var DirChanger = 1
 	if ToTheLeft:
 		DirChanger =  -1
@@ -23,18 +25,24 @@ func shoot():
 	add_child(b)
 	b.transform = $Marker2D.global_transform
 	b.velocity = b.transform.x * RandonVel() * DirChanger
+	b.velocity += b.transform.y * 900 * -1
 	b.gravity = RandonGrav()
 	
 	
 	
 func RandonVel():
 	var my_random_number = rng.randi_range(0, 4)
-	var ListOfSpeeds = [200,300,400,500,250]
+	var ListOfSpeeds = [100,150,100,100,150]
 	var NewSpeed = ListOfSpeeds[my_random_number]
 	return NewSpeed
 func RandonGrav():
 	var my_random_number = rng.randi_range(0, 4)
-	var ListOfGrav = [200,300,400,500,250]
+	var ListOfGrav = [500,500,500,500 ,525]
+	var NewGrav = ListOfGrav[my_random_number]
+	return NewGrav
+func RandonUpVal():
+	var my_random_number = rng.randi_range(0, 4)
+	var ListOfGrav = [5000,5000,5000,5000,5000]
 	var NewGrav = ListOfGrav[my_random_number]
 	return NewGrav
 func  StartTimer():
