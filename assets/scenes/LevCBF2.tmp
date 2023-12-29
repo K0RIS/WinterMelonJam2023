@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://d10fviu00m7jp"]
+
+[ext_resource type="Script" path="res://assets/scripts/LevelBase.gd" id="1_02c7m"]
+[ext_resource type="PackedScene" uid="uid://cvbr3f3sf14b3" path="res://assets/scenes/SnakeCharmer.tscn" id="3_mo7sc"]
+[ext_resource type="PackedScene" uid="uid://dl8tbmqlmed3s" path="res://assets/scenes/EnvironmentalAreas.tscn" id="4_05wpu"]
+[ext_resource type="PackedScene" uid="uid://ckl11nu7q51de" path="res://assets/scenes/ScoreManager.tscn" id="4_mmlrb"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vlu4"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_70fy5"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5b6te"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mvwt3"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_02c7m")
+
+[node name="Boundaries" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundaries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_6vlu4")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(0, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_70fy5")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(960, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D3"]
+shape = SubResource("WorldBoundaryShape2D_5b6te")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(0, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D4"]
+shape = SubResource("WorldBoundaryShape2D_mvwt3")
+
+[node name="SnakeCharmer" parent="." instance=ExtResource("3_mo7sc")]
+position = Vector2(348, 460)
+
+[node name="SongTrack" parent="SnakeCharmer/RhythmGame" index="0"]
+autoplay = false
+
+[node name="ScoreManager" parent="." instance=ExtResource("4_mmlrb")]
+position = Vector2(658.9, 542.85)
+
+[node name="EnvironmentalAreas" parent="." instance=ExtResource("4_05wpu")]
+
+[connection signal="AddPoints" from="SnakeCharmer/RhythmGame/ArrowRig" to="ScoreManager" method="_on_arrow_rig_add_points"]
+[connection signal="MissedNote" from="SnakeCharmer/RhythmGame/ArrowRig" to="ScoreManager" method="_on_arrow_rig_missed_note"]
+
+[editable path="SnakeCharmer"]
+[editable path="SnakeCharmer/RhythmGame"]
+[editable path="EnvironmentalAreas"]

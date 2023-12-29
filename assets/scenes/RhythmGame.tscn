@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cuvq7up0uk2f8" path="res://assets/icon.svg" id="3_omj4i"]
 
 [node name="RhythmGame" type="Node2D"]
+scale = Vector2(0.75, 0.75)
 script = ExtResource("1_0l3ip")
 
 [node name="SongTrack" type="AudioStreamPlayer2D" parent="."]
@@ -50,6 +51,7 @@ size_flags_vertical = 10
 [node name="Spawn" type="Node2D" parent="ArrowRig/Lanes/Lane1/SpawnAnchor"]
 
 [node name="Sep1" type="VSeparator" parent="ArrowRig/Lanes"]
+visible = false
 layout_mode = 2
 
 [node name="Lane2" type="VFlowContainer" parent="ArrowRig/Lanes"]
@@ -74,6 +76,7 @@ size_flags_vertical = 10
 [node name="Spawn" type="Node2D" parent="ArrowRig/Lanes/Lane2/SpawnAnchor"]
 
 [node name="Sep2" type="VSeparator" parent="ArrowRig/Lanes"]
+visible = false
 layout_mode = 2
 
 [node name="Lane3" type="VFlowContainer" parent="ArrowRig/Lanes"]
@@ -96,6 +99,7 @@ size_flags_vertical = 10
 [node name="Spawn" type="Node2D" parent="ArrowRig/Lanes/Lane3/SpawnAnchor"]
 
 [node name="Sep3" type="VSeparator" parent="ArrowRig/Lanes"]
+visible = false
 layout_mode = 2
 
 [node name="Lane4" type="VFlowContainer" parent="ArrowRig/Lanes"]

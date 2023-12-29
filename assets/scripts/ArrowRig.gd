@@ -21,6 +21,7 @@ signal  MissedNote
 func _physics_process(delta):
 	for note in get_tree().get_nodes_in_group("note"):
 		if (get_note_dist(note) < DEATH_OFFSET):
+			ScoreManager.on_missed_note()
 			emit_signal("MissedNote")
 			note.queue_free()
 
@@ -49,7 +50,7 @@ func _input(event):
 
 func check_accuracy(note: Note):
 	var dist = get_note_dist(note)
-	emit_signal("AddPoints",dist)
+	ScoreManager.add_points(dist)
 	note.queue_free()
 
 

@@ -1,12 +1,46 @@
 extends CharacterBody2D
+class_name SnakeCharmer
 
-@export var speed = 15000.0 #pixels/s
+const SPEED = 800.0
+const JUMP_VELOCITY = -400.0
+
+@onready var rhythm_game = $RhythmGame
+
+var CurrentArea :String
+signal CallMeterManager(CurrentArea)
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 
 func _physics_process(delta):
-	velocity =  Input.get_axis("move_left", "move_right") * Vector2.RIGHT
-	velocity += Input.get_axis("move_up", "move_down") * Vector2.DOWN
+	# Add the gravity.
+	velocity.y += gravity * delta
 
-	velocity = velocity.normalized()
-	velocity *= speed * delta
-	
+	# Handle jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction = Input.get_axis("move_left", "move_right")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
 	move_and_slide()
+
+
+func _on_hit_box_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	CurrentArea = area.name
+	
+	
+func _on_hit_box_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
+	CurrentArea = "None"
+
+
+
+func _on_timer_timeout():
+	emit_signal("CallMeterManager", CurrentArea)
+
+
