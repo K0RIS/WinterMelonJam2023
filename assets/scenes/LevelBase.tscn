@@ -55,4 +55,3 @@ position = Vector2(348, 460)
 
 [editable path="EnvironmentalAreas"]
 [editable path="SnakeCharmer"]
-[editable path="SnakeCharmer/RhythmGame"]

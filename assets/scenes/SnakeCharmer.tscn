@@ -27,10 +27,12 @@ debug_color = Color(0.85098, 0.25098, 0.690196, 0.419608)
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="RhythmGame" parent="." instance=ExtResource("2_mo0dp")]
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_vl6t2")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="RhythmGame" parent="Node" instance=ExtResource("2_mo0dp")]
 
 [connection signal="area_shape_entered" from="HitBox" to="." method="_on_hit_box_area_shape_entered"]
 [connection signal="area_shape_exited" from="HitBox" to="." method="_on_hit_box_area_shape_exited"]

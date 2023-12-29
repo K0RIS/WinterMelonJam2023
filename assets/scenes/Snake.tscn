@@ -1455,9 +1455,9 @@ animations = [{
 }]
 
 [node name="Snake" type="AnimatedSprite2D"]
-position = Vector2(0, -128)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_cv6j7")
-animation = &"1"
+animation = &"2"
+autoplay = "1"
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

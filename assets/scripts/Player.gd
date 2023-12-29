@@ -4,7 +4,7 @@ class_name SnakeCharmer
 const SPEED = 800.0
 const JUMP_VELOCITY = -400.0
 
-@onready var rhythm_game = $RhythmGame
+@onready var rhythm_game = $Node/RhythmGame
 
 var CurrentArea :String
 signal CallMeterManager(CurrentArea)
@@ -17,8 +17,8 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		#velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

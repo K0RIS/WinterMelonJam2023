@@ -15,19 +15,18 @@ texture = ExtResource("5_k7m7y")
 position = Vector2(298, 405)
 metadata/_edit_group_ = true
 
-[node name="RhythmGame" parent="SnakeCharmer" index="3"]
+[node name="RhythmGame" parent="SnakeCharmer/Node" index="0"]
 bpm = 95.0
 
-[node name="PrincipalTrack" parent="SnakeCharmer/RhythmGame" index="0"]
+[node name="PrincipalTrack" parent="SnakeCharmer/Node/RhythmGame" index="0"]
 stream = ExtResource("2_tosxs")
-autoplay = false
 
-[node name="FluteTrack" parent="SnakeCharmer/RhythmGame" index="1"]
+[node name="FluteTrack" parent="SnakeCharmer/Node/RhythmGame" index="1"]
 stream = ExtResource("3_iv3it")
 
-[node name="ComboTrack" parent="SnakeCharmer/RhythmGame" index="2"]
+[node name="ComboTrack" parent="SnakeCharmer/Node/RhythmGame" index="2"]
 stream = ExtResource("4_w60ci")
 
 [editable path="EnvironmentalAreas"]
 [editable path="SnakeCharmer"]
-[editable path="SnakeCharmer/RhythmGame"]
+[editable path="SnakeCharmer/Node/RhythmGame"]

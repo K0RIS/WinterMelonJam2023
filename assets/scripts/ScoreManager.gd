@@ -13,7 +13,8 @@ const WRONG_NOTE = [
 	preload("res://assets/sound/music/Wrong/Wrong_6.wav"),
 	preload("res://assets/sound/music/Wrong/Wrong_7.wav"),
 	preload("res://assets/sound/music/Wrong/Wrong_8.wav"),
-	preload("res://assets/sound/music/sfx/Combo.wav")
+	preload("res://assets/sound/music/sfx/Combo.wav"),
+	preload("res://assets/sound/music/sfx/Combo_Lost.wav")
 ]
 
 @onready var score = $VBoxContainer/Score
@@ -22,6 +23,9 @@ const WRONG_NOTE = [
 
 var current_combo = 0.0
 var current_score = 0.0
+
+var _combo_volume_db = -80.0
+var _target_combo_volume_db = -80.0
 
 
 enum AudioBus {
@@ -32,21 +36,30 @@ enum AudioBus {
 
 
 func _ready():
-	AudioServer.set_bus_mute(AudioBus.Combo, true)
+	AudioServer.set_bus_volume_db(AudioBus.Combo, _combo_volume_db)
+	pass
 
+func _physics_process(delta):
+	_combo_volume_db = lerpf(_combo_volume_db, _target_combo_volume_db, 0.05)
+	AudioServer.set_bus_volume_db(AudioBus.Combo, _combo_volume_db)
 
 func break_combo():
+	if current_combo >= 10 and _target_combo_volume_db == 0:
+		wrong_note_player.stream = WRONG_NOTE[9]
+		wrong_note_player.play()
+		
 	current_combo = 0
 	combo.text = "x" + str(current_combo)
-	AudioServer.set_bus_mute(AudioBus.Combo, true)
+	_target_combo_volume_db = -80
 	AudioServer.set_bus_mute(AudioBus.Ney, true)
+	
 
 
 func add_to_combo():
 	current_combo += 1
 	current_combo = clampi(current_combo, 0, MAX_COMBO)
-	if current_combo >= 10 and AudioServer.is_bus_mute(AudioBus.Combo):
-		AudioServer.set_bus_mute(AudioBus.Combo, false)
+	if current_combo >= 10 and _target_combo_volume_db != 0:
+		_target_combo_volume_db = 0
 		wrong_note_player.stream = WRONG_NOTE[8]
 		wrong_note_player.play()
 	combo.text = "x" + str(current_combo)

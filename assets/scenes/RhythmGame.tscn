@@ -23,16 +23,23 @@ bus = &"Combo"
 [node name="ArrowRig" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_top = -100.0
+offset_bottom = -100.0
 script = ExtResource("3_mup7y")
 
 [node name="Lanes" type="HFlowContainer" parent="ArrowRig"]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -126.5
 offset_top = -400.0
-offset_right = 567.0
+offset_right = 126.5
+grow_horizontal = 2
 grow_vertical = 0
+alignment = 1
 
 [node name="Lane1" type="VFlowContainer" parent="ArrowRig/Lanes"]
 custom_minimum_size = Vector2(50, 400)
