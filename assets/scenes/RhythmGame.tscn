@@ -126,4 +126,8 @@ size_flags_vertical = 10
 
 [node name="Spawn" type="Node2D" parent="ArrowRig/Lanes/Lane4/SpawnAnchor"]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="beat" from="." to="." method="_on_beat"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

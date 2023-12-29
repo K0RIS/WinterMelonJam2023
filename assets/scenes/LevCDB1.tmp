@@ -53,6 +53,12 @@ shape = SubResource("WorldBoundaryShape2D_mvwt3")
 [node name="SnakeCharmer" parent="." instance=ExtResource("3_mo7sc")]
 position = Vector2(348, 460)
 
+[node name="RhythmGame" parent="SnakeCharmer" index="3"]
+bpm = 45.0
+
+[node name="PrincipalTrack" parent="SnakeCharmer/RhythmGame" index="0"]
+pitch_scale = 0.5
+
 [editable path="EnvironmentalAreas"]
 [editable path="SnakeCharmer"]
 [editable path="SnakeCharmer/RhythmGame"]

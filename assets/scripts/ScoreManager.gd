@@ -12,7 +12,8 @@ const WRONG_NOTE = [
 	preload("res://assets/sound/music/Wrong/Wrong_5.wav"),
 	preload("res://assets/sound/music/Wrong/Wrong_6.wav"),
 	preload("res://assets/sound/music/Wrong/Wrong_7.wav"),
-	preload("res://assets/sound/music/Wrong/Wrong_8.wav")
+	preload("res://assets/sound/music/Wrong/Wrong_8.wav"),
+	preload("res://assets/sound/music/sfx/Combo.wav")
 ]
 
 @onready var score = $VBoxContainer/Score
@@ -44,9 +45,10 @@ func break_combo():
 func add_to_combo():
 	current_combo += 1
 	current_combo = clampi(current_combo, 0, MAX_COMBO)
-	if current_combo >= 10:
+	if current_combo >= 10 and AudioServer.is_bus_mute(AudioBus.Combo):
 		AudioServer.set_bus_mute(AudioBus.Combo, false)
-		pass
+		wrong_note_player.stream = WRONG_NOTE[8]
+		wrong_note_player.play()
 	combo.text = "x" + str(current_combo)
 	AudioServer.set_bus_mute(AudioBus.Ney, false)
 
