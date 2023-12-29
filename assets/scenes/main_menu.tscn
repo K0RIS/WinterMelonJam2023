@@ -1,18 +1,63 @@
-[gd_scene load_steps=14 format=3 uid="uid://4cg6iwwe7j6k"]
+[gd_scene load_steps=21 format=3 uid="uid://4cg6iwwe7j6k"]
 
 [ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_m3phr"]
 [ext_resource type="Texture2D" uid="uid://dv1pdie8igfsf" path="res://assets/UiAsset/cyan_square_30.png" id="2_1onor"]
 [ext_resource type="Texture2D" uid="uid://dc6tibj77kmvf" path="res://assets/UiAsset/cyan_pressed_square_29.png" id="3_76isd"]
+[ext_resource type="Texture2D" uid="uid://d1r8swc66bq16" path="res://assets/UiAsset/cyan_square_13.png" id="4_eb6aa"]
 [ext_resource type="Texture2D" uid="uid://ca8yhvr7ribg" path="res://assets/UiAsset/cyan_square_7.png" id="4_llu73"]
 [ext_resource type="Texture2D" uid="uid://b7o72dlxkxxn" path="res://assets/UiAsset/cyan_pressed_square_6.png" id="5_b7ybk"]
+[ext_resource type="Texture2D" uid="uid://cdake5ptk6xcb" path="res://assets/UiAsset/cyan_pressed_square_12.png" id="5_gkw1r"]
 [ext_resource type="Script" path="res://assets/scripts/Settings Ui.gd" id="6_hpvos"]
+[ext_resource type="Texture2D" uid="uid://b8jmetc03u7d4" path="res://assets/UiAsset/cyan_square_2.png" id="6_tr3ty"]
+[ext_resource type="Texture2D" uid="uid://veota7hst1lu" path="res://assets/UiAsset/cyan_pressed_square_1.png" id="7_mtyf8"]
 [ext_resource type="Texture2D" uid="uid://dplk4kucvjwiy" path="res://assets/UiAsset/cyan_square_3.png" id="7_yaxq6"]
 [ext_resource type="Texture2D" uid="uid://b6brbbhb8byv2" path="res://assets/UiAsset/cyan_pressed_square_2.png" id="8_3v8t0"]
+[ext_resource type="AudioStream" uid="uid://c8pxyo87gn858" path="res://assets/sound/SoundEffects/click-menu-app-147357.mp3" id="13_annic"]
+[ext_resource type="Script" path="res://assets/scripts/Level Ui.gd" id="14_ncv2x"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o0cre"]
 
 [sub_resource type="Animation" id="Animation_scoy6"]
 length = 0.001
+
+[sub_resource type="Animation" id="Animation_vvwg4"]
+resource_name = "ShowLevels"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level Ui:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Settings Ui:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenmuButtons:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_oo7u1"]
 resource_name = "ShowMain"
@@ -39,6 +84,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Level Ui:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_sjnvu"]
@@ -67,10 +124,23 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Level Ui:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u3gk4"]
 _data = {
 "RESET": SubResource("Animation_scoy6"),
+"ShowLevels": SubResource("Animation_vvwg4"),
 "ShowMain": SubResource("Animation_oo7u1"),
 "ShowSettings": SubResource("Animation_sjnvu")
 }
@@ -86,41 +156,88 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Start" type="TextureButton" parent="MainMenmuButtons"]
-texture_filter = 1
+[node name="MainButtons" type="VBoxContainer" parent="MainMenmuButtons"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 534.0
-offset_top = 650.0
-offset_right = -1306.0
-offset_bottom = -350.0
+offset_left = 843.0
+offset_top = 55.0
+offset_right = -993.0
+offset_bottom = -923.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3, 3)
+scale = Vector2(10, 10)
+theme_override_constants/separation = 10
+metadata/_edit_group_ = true
+
+[node name="Start" type="TextureButton" parent="MainMenmuButtons/MainButtons"]
+texture_filter = 1
+layout_mode = 2
 texture_normal = ExtResource("2_1onor")
 texture_pressed = ExtResource("3_76isd")
 stretch_mode = 4
 metadata/_edit_group_ = true
 
-[node name="Settings" type="TextureButton" parent="MainMenmuButtons"]
+[node name="Levels" type="TextureButton" parent="MainMenmuButtons/MainButtons"]
 texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1063.0
-offset_top = 650.0
-offset_right = -777.0
-offset_bottom = -350.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(3, 3)
+layout_mode = 2
+texture_normal = ExtResource("4_eb6aa")
+texture_pressed = ExtResource("5_gkw1r")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="Settings" type="TextureButton" parent="MainMenmuButtons/MainButtons"]
+texture_filter = 1
+layout_mode = 2
 texture_normal = ExtResource("4_llu73")
 texture_pressed = ExtResource("5_b7ybk")
 stretch_mode = 4
 metadata/_edit_group_ = true
+
+[node name="Quit" type="TextureButton" parent="MainMenmuButtons/MainButtons"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("6_tr3ty")
+texture_pressed = ExtResource("7_mtyf8")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="MainMenmuButtons"]
+layout_mode = 2
+offset_left = 869.0
+offset_top = -9.0
+offset_right = 987.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 50
+text = "Start"
+
+[node name="Label2" type="Label" parent="MainMenmuButtons"]
+layout_mode = 2
+offset_left = 860.0
+offset_top = 275.0
+offset_right = 1016.0
+offset_bottom = 344.0
+theme_override_font_sizes/font_size = 50
+text = "Levels"
+
+[node name="Label3" type="Label" parent="MainMenmuButtons"]
+layout_mode = 2
+offset_left = 843.0
+offset_top = 546.0
+offset_right = 1037.0
+offset_bottom = 615.0
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="Label4" type="Label" parent="MainMenmuButtons"]
+layout_mode = 2
+offset_left = 869.0
+offset_top = 823.0
+offset_right = 984.0
+offset_bottom = 892.0
+theme_override_font_sizes/font_size = 50
+text = "Quit"
 
 [node name="Settings Ui" type="Control" parent="."]
 visible = false
@@ -139,15 +256,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.72549, 0.278431, 0.666667, 1)
+color = Color(0.0117647, 0.301961, 0.435294, 1)
 
 [node name="Back" type="TextureButton" parent="Settings Ui"]
 texture_filter = 1
 layout_mode = 2
-offset_left = 810.0
-offset_top = 694.0
-offset_right = 849.0
-offset_bottom = 732.0
+offset_left = 1666.0
+offset_top = 823.0
+offset_right = 1749.0
+offset_bottom = 903.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
@@ -191,7 +308,116 @@ libraries = {
 "": SubResource("AnimationLibrary_u3gk4")
 }
 
-[connection signal="pressed" from="MainMenmuButtons/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="MainMenmuButtons/Settings" to="." method="_on_settings_pressed"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_annic")
+
+[node name="Level Ui" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_ncv2x")
+
+[node name="SettingsBackGround" type="ColorRect" parent="Level Ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0117647, 0.301961, 0.435294, 1)
+
+[node name="Back" type="TextureButton" parent="Level Ui"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 1666.0
+offset_top = 823.0
+offset_right = 1749.0
+offset_bottom = 903.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture_normal = ExtResource("7_yaxq6")
+texture_pressed = ExtResource("8_3v8t0")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="MainButtons" type="VBoxContainer" parent="Level Ui"]
+layout_mode = 2
+offset_left = 818.0
+offset_top = 149.0
+offset_right = 986.0
+offset_bottom = 556.0
+theme_override_constants/separation = 150
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Level Ui/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Level 1
+"
+
+[node name="Label2" type="Label" parent="Level Ui/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Level 2"
+
+[node name="Label3" type="Label" parent="Level Ui/MainButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Level 3"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Level Ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 805.0
+offset_top = 208.0
+offset_right = -1097.0
+offset_bottom = -810.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(10, 10)
+metadata/_edit_group_ = true
+
+[node name="level1" type="TextureButton" parent="Level Ui/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("2_1onor")
+texture_pressed = ExtResource("3_76isd")
+stretch_mode = 4
+
+[node name="Level2" type="TextureButton" parent="Level Ui/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("2_1onor")
+texture_pressed = ExtResource("3_76isd")
+stretch_mode = 4
+
+[node name="Level3" type="TextureButton" parent="Level Ui/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture_normal = ExtResource("2_1onor")
+texture_pressed = ExtResource("3_76isd")
+stretch_mode = 4
+
+[connection signal="button_down" from="MainMenmuButtons/MainButtons/Start" to="." method="SoundEffect"]
+[connection signal="pressed" from="MainMenmuButtons/MainButtons/Start" to="." method="_on_start_pressed"]
+[connection signal="button_down" from="MainMenmuButtons/MainButtons/Levels" to="." method="SoundEffect"]
+[connection signal="pressed" from="MainMenmuButtons/MainButtons/Levels" to="." method="_on_levels_pressed"]
+[connection signal="button_down" from="MainMenmuButtons/MainButtons/Settings" to="." method="SoundEffect"]
+[connection signal="pressed" from="MainMenmuButtons/MainButtons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="button_down" from="MainMenmuButtons/MainButtons/Quit" to="." method="SoundEffect"]
+[connection signal="pressed" from="MainMenmuButtons/MainButtons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="button_down" from="Settings Ui/Back" to="." method="SoundEffect"]
 [connection signal="pressed" from="Settings Ui/Back" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="Settings Ui/VBoxContainer/Music" to="Settings Ui" method="_on_music_value_changed"]
+[connection signal="button_down" from="Level Ui/Back" to="." method="SoundEffect"]
+[connection signal="pressed" from="Level Ui/Back" to="." method="_on_back_pressed"]
+[connection signal="button_down" from="Level Ui/VBoxContainer/level1" to="." method="SoundEffect"]
+[connection signal="button_down" from="Level Ui/VBoxContainer/Level2" to="." method="SoundEffect"]
+[connection signal="button_down" from="Level Ui/VBoxContainer/Level3" to="." method="SoundEffect"]

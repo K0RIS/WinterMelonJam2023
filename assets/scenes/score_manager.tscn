@@ -8,7 +8,7 @@ script = ExtResource("1_bffug")
 [node name="Ui" type="CanvasLayer" parent="."]
 
 [node name="Score" type="Label" parent="Ui"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -831.99
@@ -22,7 +22,7 @@ text = " Score:"
 metadata/_edit_use_anchors_ = true
 
 [node name="Status" type="Label" parent="Ui"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 67.0
