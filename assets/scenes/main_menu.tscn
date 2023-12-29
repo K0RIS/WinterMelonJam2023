@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://4cg6iwwe7j6k"]
+[gd_scene load_steps=24 format=3 uid="uid://4cg6iwwe7j6k"]
 
 [ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_m3phr"]
 [ext_resource type="Texture2D" uid="uid://dv1pdie8igfsf" path="res://assets/UiAsset/cyan_square_30.png" id="2_1onor"]
@@ -12,10 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://veota7hst1lu" path="res://assets/UiAsset/cyan_pressed_square_1.png" id="7_mtyf8"]
 [ext_resource type="Texture2D" uid="uid://dplk4kucvjwiy" path="res://assets/UiAsset/cyan_square_3.png" id="7_yaxq6"]
 [ext_resource type="Texture2D" uid="uid://b6brbbhb8byv2" path="res://assets/UiAsset/cyan_pressed_square_2.png" id="8_3v8t0"]
+[ext_resource type="Theme" uid="uid://derawnhnqgv8s" path="res://assets/UiAsset/PixelFont.tres" id="10_hk0rq"]
+[ext_resource type="FontFile" uid="uid://x6s63b14lemt" path="res://assets/UiAsset/upheavtt.ttf" id="11_4embr"]
 [ext_resource type="AudioStream" uid="uid://c8pxyo87gn858" path="res://assets/sound/SoundEffects/click-menu-app-147357.mp3" id="13_annic"]
+[ext_resource type="Texture2D" uid="uid://b500vmsrqgkv" path="res://assets/UiAsset/green_right_slider.png" id="13_pornp"]
 [ext_resource type="Script" path="res://assets/scripts/Level Ui.gd" id="14_ncv2x"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o0cre"]
+[sub_resource type="Theme" id="Theme_gayxk"]
+default_font = ExtResource("11_4embr")
 
 [sub_resource type="Animation" id="Animation_scoy6"]
 length = 0.001
@@ -205,39 +209,43 @@ metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="MainMenmuButtons"]
 layout_mode = 2
-offset_left = 869.0
-offset_top = -9.0
-offset_right = 987.0
-offset_bottom = 60.0
+offset_left = 862.0
+offset_top = 8.0
+offset_right = 1008.0
+offset_bottom = 77.0
+theme = ExtResource("10_hk0rq")
 theme_override_font_sizes/font_size = 50
 text = "Start"
 
 [node name="Label2" type="Label" parent="MainMenmuButtons"]
 layout_mode = 2
-offset_left = 860.0
-offset_top = 275.0
-offset_right = 1016.0
-offset_bottom = 344.0
+offset_left = 847.0
+offset_top = 290.0
+offset_right = 1027.0
+offset_bottom = 359.0
+theme = SubResource("Theme_gayxk")
 theme_override_font_sizes/font_size = 50
 text = "Levels"
 
-[node name="Label3" type="Label" parent="MainMenmuButtons"]
-layout_mode = 2
-offset_left = 843.0
-offset_top = 546.0
-offset_right = 1037.0
-offset_bottom = 615.0
-theme_override_font_sizes/font_size = 50
-text = "Settings"
-
 [node name="Label4" type="Label" parent="MainMenmuButtons"]
 layout_mode = 2
-offset_left = 869.0
-offset_top = 823.0
-offset_right = 984.0
-offset_bottom = 892.0
+offset_left = 877.0
+offset_top = 852.0
+offset_right = 993.0
+offset_bottom = 921.0
+theme = ExtResource("10_hk0rq")
 theme_override_font_sizes/font_size = 50
 text = "Quit"
+
+[node name="Label3" type="Label" parent="MainMenmuButtons"]
+layout_mode = 2
+offset_left = 813.0
+offset_top = 571.0
+offset_right = 1047.0
+offset_bottom = 640.0
+theme = ExtResource("10_hk0rq")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
 
 [node name="Settings Ui" type="Control" parent="."]
 visible = false
@@ -278,30 +286,42 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 373.0
-offset_top = 185.0
-offset_right = -487.0
-offset_bottom = -778.0
+offset_left = 279.0
+offset_top = 165.0
+offset_right = -1236.0
+offset_bottom = -798.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(3, 3)
 
 [node name="Label" type="Label" parent="Settings Ui/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("10_hk0rq")
 text = "Music"
 
 [node name="Music" type="HSlider" parent="Settings Ui/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_o0cre")
+theme_override_icons/grabber = ExtResource("13_pornp")
+theme_override_icons/grabber_highlight = ExtResource("13_pornp")
+theme_override_icons/tick = ExtResource("13_pornp")
 min_value = -30.0
 max_value = 0.0
 
 [node name="Sound" type="Label" parent="Settings Ui/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("10_hk0rq")
 text = "VFX"
 
 [node name="Music2" type="HSlider" parent="Settings Ui/VBoxContainer"]
 layout_mode = 2
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_o0cre")
+theme_override_icons/grabber = ExtResource("13_pornp")
+theme_override_icons/grabber_highlight = ExtResource("13_pornp")
+theme_override_icons/grabber_disabled = ExtResource("13_pornp")
+theme_override_icons/tick = ExtResource("13_pornp")
+min_value = -30.0
+max_value = -2.0
+value = -2.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -310,6 +330,8 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_annic")
+pitch_scale = 0.95
+bus = &"VFX"
 
 [node name="Level Ui" type="Control" parent="."]
 visible = false
@@ -345,28 +367,34 @@ texture_pressed = ExtResource("8_3v8t0")
 stretch_mode = 4
 metadata/_edit_group_ = true
 
-[node name="MainButtons" type="VBoxContainer" parent="Level Ui"]
+[node name="Label" type="Label" parent="Level Ui"]
 layout_mode = 2
 offset_left = 818.0
 offset_top = 149.0
-offset_right = 986.0
-offset_bottom = 556.0
-theme_override_constants/separation = 150
-metadata/_edit_group_ = true
-
-[node name="Label" type="Label" parent="Level Ui/MainButtons"]
-layout_mode = 2
+offset_right = 1047.0
+offset_bottom = 195.0
+theme = ExtResource("10_hk0rq")
 theme_override_font_sizes/font_size = 50
 text = "Level 1
 "
 
-[node name="Label2" type="Label" parent="Level Ui/MainButtons"]
+[node name="Label2" type="Label" parent="Level Ui"]
 layout_mode = 2
+offset_left = 807.0
+offset_top = 359.0
+offset_right = 1023.0
+offset_bottom = 428.0
+theme = ExtResource("10_hk0rq")
 theme_override_font_sizes/font_size = 50
 text = "Level 2"
 
-[node name="Label3" type="Label" parent="Level Ui/MainButtons"]
+[node name="Label3" type="Label" parent="Level Ui"]
 layout_mode = 2
+offset_left = 807.0
+offset_top = 586.0
+offset_right = 1037.0
+offset_bottom = 655.0
+theme = ExtResource("10_hk0rq")
 theme_override_font_sizes/font_size = 50
 text = "Level 3"
 
@@ -375,10 +403,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 805.0
-offset_top = 208.0
-offset_right = -1097.0
-offset_bottom = -810.0
+offset_left = 807.0
+offset_top = 186.0
+offset_right = -1095.0
+offset_bottom = -832.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(10, 10)
@@ -416,6 +444,7 @@ stretch_mode = 4
 [connection signal="button_down" from="Settings Ui/Back" to="." method="SoundEffect"]
 [connection signal="pressed" from="Settings Ui/Back" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="Settings Ui/VBoxContainer/Music" to="Settings Ui" method="_on_music_value_changed"]
+[connection signal="value_changed" from="Settings Ui/VBoxContainer/Music2" to="Settings Ui" method="_on_music_2_value_changed"]
 [connection signal="button_down" from="Level Ui/Back" to="." method="SoundEffect"]
 [connection signal="pressed" from="Level Ui/Back" to="." method="_on_back_pressed"]
 [connection signal="button_down" from="Level Ui/VBoxContainer/level1" to="." method="SoundEffect"]

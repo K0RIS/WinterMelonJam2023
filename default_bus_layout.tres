@@ -1,7 +1,7 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://dqabj3be4vvds"]
+[gd_resource type="AudioBusLayout" format=3 uid="uid://csneh3psp45wr"]
 
 [resource]
-bus/1/name = &"VfX"
+bus/1/name = &"VFX"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false

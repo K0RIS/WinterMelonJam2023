@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/MeterManager.gd" id="1_vkter"]
 [ext_resource type="Script" path="res://assets/scripts/SnakeMeter.gd" id="2_fug51"]
-[ext_resource type="Script" path="res://assets/scripts/CharmMeter2.gd" id="3_ujs7p"]
+[ext_resource type="Script" path="res://assets/scripts/CharmMeter.gd" id="3_ujs7p"]
 [ext_resource type="Script" path="res://assets/scripts/PlaceHolder.gd" id="4_672uf"]
 
 [node name="Meters" type="CanvasLayer"]

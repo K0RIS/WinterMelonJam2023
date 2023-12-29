@@ -16,3 +16,15 @@ func shoot():
 	b.transform = $Hand/Position2D.global_transform
 	b.velocity = b.transform.x * muzzle_velocity
 	b.gravity = gravity
+	
+	
+	
+func  StartTimer():
+	
+	$Timer.start()
+	
+func StopTimer():
+	
+	$Timer.stop()
+func _on_timer_timeout():
+	shoot()
