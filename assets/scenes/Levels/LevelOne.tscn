@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmebqeqnbdcur"]
+
+[ext_resource type="PackedScene" uid="uid://d10fviu00m7jp" path="res://assets/scenes/LevelBase.tscn" id="1_yo8sc"]
+[ext_resource type="AudioStream" uid="uid://64qx3f08yj11" path="res://assets/sound/music/level_one/Level_1_Principal.ogg" id="2_tosxs"]
+[ext_resource type="AudioStream" uid="uid://q2vfx5i32n2f" path="res://assets/sound/music/level_one/Level_1_Ney.ogg" id="3_iv3it"]
+[ext_resource type="AudioStream" uid="uid://2te1ssqxhsuh" path="res://assets/sound/music/level_one/Level_1_Combo.ogg" id="4_w60ci"]
+
+[node name="Level" instance=ExtResource("1_yo8sc")]
+
+[node name="RhythmGame" parent="SnakeCharmer" index="3"]
+bpm = 95.0
+
+[node name="PrincipalTrack" parent="SnakeCharmer/RhythmGame" index="0"]
+stream = ExtResource("2_tosxs")
+autoplay = false
+
+[node name="FluteTrack" parent="SnakeCharmer/RhythmGame" index="1"]
+stream = ExtResource("3_iv3it")
+
+[node name="ComboTrack" parent="SnakeCharmer/RhythmGame" index="2"]
+stream = ExtResource("4_w60ci")
+
+[editable path="EnvironmentalAreas"]
+[editable path="SnakeCharmer"]
+[editable path="SnakeCharmer/RhythmGame"]

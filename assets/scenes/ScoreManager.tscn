@@ -34,3 +34,5 @@ text = "0"
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
 text = "x0"
+
+[node name="WrongNotePlayer" type="AudioStreamPlayer2D" parent="."]

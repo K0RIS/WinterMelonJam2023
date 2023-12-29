@@ -43,14 +43,11 @@ position = Vector2(0, 540)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D4"]
 shape = SubResource("WorldBoundaryShape2D_mvwt3")
 
+[node name="EnvironmentalAreas" parent="." instance=ExtResource("4_05wpu")]
+
 [node name="SnakeCharmer" parent="." instance=ExtResource("3_mo7sc")]
 position = Vector2(348, 460)
 
-[node name="SongTrack" parent="SnakeCharmer/RhythmGame" index="0"]
-autoplay = false
-
-[node name="EnvironmentalAreas" parent="." instance=ExtResource("4_05wpu")]
-
+[editable path="EnvironmentalAreas"]
 [editable path="SnakeCharmer"]
 [editable path="SnakeCharmer/RhythmGame"]
-[editable path="EnvironmentalAreas"]
