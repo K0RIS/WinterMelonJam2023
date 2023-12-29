@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl8tbmqlmed3s"]
+[gd_scene load_steps=6 format=3 uid="uid://dl8tbmqlmed3s"]
 
 [ext_resource type="Script" path="res://assets/scripts/EnvironmentalAreas.gd" id="1_ufwa4"]
+[ext_resource type="PackedScene" uid="uid://dqwg4678k7u0u" path="res://assets/scenes/rock_thrower.tscn" id="2_2nllq"]
 [ext_resource type="PackedScene" uid="uid://br3n44tptuhlc" path="res://assets/scenes/Snake.tscn" id="2_gsgy3"]
 [ext_resource type="Script" path="res://assets/scripts/Meter.gd" id="3_kv1wc"]
 
@@ -9,6 +10,13 @@ size = Vector2(320, 540)
 
 [node name="EnvironmentalAreas" type="Node2D"]
 script = ExtResource("1_ufwa4")
+
+[node name="RockThrower" parent="." instance=ExtResource("2_2nllq")]
+position = Vector2(6, 399)
+
+[node name="RockThrower2" parent="." instance=ExtResource("2_2nllq")]
+position = Vector2(488, 383)
+ToTheLeft = true
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(480, 270)
@@ -48,7 +56,7 @@ grow_vertical = 2
 text = "Snake"
 
 [node name="CrowdArea" type="Area2D" parent="Node2D"]
-position = Vector2(-320, 0)
+position = Vector2(-316, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CrowdArea"]
@@ -66,7 +74,7 @@ offset_right = 177.5
 offset_bottom = 23.5
 grow_horizontal = 2
 grow_vertical = 2
-value = 50.0
+value = 1.0
 script = ExtResource("3_kv1wc")
 metadata/_edit_group_ = true
 
@@ -99,7 +107,7 @@ offset_right = 177.5
 offset_bottom = 23.5
 grow_horizontal = 2
 grow_vertical = 2
-value = 50.0
+value = 1.0
 script = ExtResource("3_kv1wc")
 metadata/_edit_group_ = true
 
@@ -112,19 +120,23 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Place Holder"
 metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="Node2D/SnakeArea" to="." method="_on_snake_area_body_entered"]
 [connection signal="body_exited" from="Node2D/SnakeArea" to="." method="_on_snake_area_body_exited"]
 [connection signal="bar_empty" from="Node2D/SnakeArea/SnakeMeter" to="." method="_on_snake_meter_bar_empty"]
+[connection signal="bar_not_empty" from="Node2D/SnakeArea/SnakeMeter" to="." method="_on_snake_meter_bar_not_empty"]
 [connection signal="value_changed" from="Node2D/SnakeArea/SnakeMeter" to="." method="_on_snake_meter_value_changed"]
 [connection signal="value_changed" from="Node2D/SnakeArea/SnakeMeter" to="Node2D/SnakeArea/SnakeMeter" method="_on_value_changed"]
 [connection signal="body_entered" from="Node2D/CrowdArea" to="." method="_on_crowd_area_body_entered"]
 [connection signal="body_exited" from="Node2D/CrowdArea" to="." method="_on_crowd_area_body_exited"]
 [connection signal="bar_empty" from="Node2D/CrowdArea/CharmMeter" to="." method="_on_charm_meter_bar_empty"]
+[connection signal="bar_not_empty" from="Node2D/CrowdArea/CharmMeter" to="." method="_on_charm_meter_bar_not_empty"]
 [connection signal="value_changed" from="Node2D/CrowdArea/CharmMeter" to="." method="_on_charm_meter_value_changed"]
 [connection signal="value_changed" from="Node2D/CrowdArea/CharmMeter" to="Node2D/CrowdArea/CharmMeter" method="_on_value_changed"]
 [connection signal="body_entered" from="Node2D/PlaceholderArea" to="." method="_on_placeholder_area_body_entered"]
 [connection signal="body_exited" from="Node2D/PlaceholderArea" to="." method="_on_placeholder_area_body_exited"]
 [connection signal="bar_empty" from="Node2D/PlaceholderArea/PlaceholderMeter" to="." method="_on_place_holder_bar_empty"]
+[connection signal="bar_not_empty" from="Node2D/PlaceholderArea/PlaceholderMeter" to="." method="_on_placeholder_meter_bar_not_empty"]
 [connection signal="value_changed" from="Node2D/PlaceholderArea/PlaceholderMeter" to="." method="_on_place_holder_value_changed"]
 [connection signal="value_changed" from="Node2D/PlaceholderArea/PlaceholderMeter" to="Node2D/PlaceholderArea/PlaceholderMeter" method="_on_value_changed"]

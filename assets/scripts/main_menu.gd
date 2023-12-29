@@ -9,9 +9,15 @@ func _on_start_pressed():
 
 func _on_settings_pressed():
 	$AnimationPlayer.play("ShowSettings")
-
-
+	
 func _on_back_pressed():
 	$AnimationPlayer.play("ShowMain")
-
-
+	
+func _on_quit_pressed():
+	get_tree().quit()
+	
+func SoundEffect():
+	$AudioStreamPlayer.play()
+	
+func _on_levels_pressed():
+	$AnimationPlayer.play("ShowLevels")

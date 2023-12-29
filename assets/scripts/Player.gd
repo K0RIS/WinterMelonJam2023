@@ -10,7 +10,8 @@ var CurrentArea :String
 signal CallMeterManager(CurrentArea)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+var MaxHealth = 3
+var CurrentHealth = 3
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -44,3 +45,12 @@ func _on_timer_timeout():
 	emit_signal("CallMeterManager", CurrentArea)
 
 
+
+
+func _on_rock_hit_box_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	CurrentHealth -= 1
+	CheckHealth()
+
+func  CheckHealth():
+	if CurrentHealth <= 0:
+		print("you lost due lost of health")
