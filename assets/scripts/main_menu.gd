@@ -1,7 +1,8 @@
 extends CanvasLayer
 
-
-
+func _ready():
+	get_tree().paused = false
+	ScoreManager.visible = false
 func _on_start_pressed():
 	get_tree().change_scene_to_file("res://assets/scenes/Debug.tscn")
 	print("start game")
@@ -21,4 +22,8 @@ func SoundEffect():
 	
 func _on_levels_pressed():
 	$AnimationPlayer.play("ShowLevels")
+
+func Controls():
+	$AnimationPlayer.play("ShowControls")
+
 

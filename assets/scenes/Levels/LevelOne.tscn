@@ -22,6 +22,14 @@ stream = ExtResource("3_iv3it")
 [node name="ComboTrack" parent="SnakeCharmer/Node/RhythmGame" index="2"]
 stream = ExtResource("4_w60ci")
 
+[node name="AnimatedSprite2D" parent="SnakeCharmer" index="5"]
+position = Vector2(15, 6)
+
+[node name="LoseScreen" parent="." index="5"]
+process_mode = 3
+
+[connection signal="GettingFaster" from="SnakeCharmer/Node/RhythmGame" to="SpeedUp" method="_on_rhythm_game_getting_faster"]
+
 [editable path="EnvironmentalAreas"]
 [editable path="SnakeCharmer"]
 [editable path="SnakeCharmer/Node/RhythmGame"]

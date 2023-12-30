@@ -8,3 +8,7 @@ func _on_back_button_down():
 	
 func _process(delta):
 	final_score.text = str(ScoreManager.current_score)
+
+
+func Pause():
+	get_tree().paused = true

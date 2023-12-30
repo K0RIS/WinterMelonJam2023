@@ -20,6 +20,17 @@ stream = ExtResource("7_0d6pu")
 [node name="ComboTrack" parent="SnakeCharmer/Node/RhythmGame" index="2"]
 stream = ExtResource("8_6y3iv")
 
+[node name="LoseScreen" parent="." index="5"]
+process_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="." index="7"]
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+color = Color(1, 0, 0, 0.129412)
+
+[connection signal="GettingFaster" from="SnakeCharmer/Node/RhythmGame" to="SpeedUp" method="_on_rhythm_game_getting_faster"]
+
 [editable path="EnvironmentalAreas"]
 [editable path="SnakeCharmer"]
 [editable path="SnakeCharmer/Node/RhythmGame"]

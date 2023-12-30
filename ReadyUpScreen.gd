@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+signal  StartGame
 var CanStart = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,6 +11,7 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("Start_Level") and CanStart:
 		CanStart = false
+		emit_signal("StartGame")
 		$AnimationPlayer.play("Start")
 		$LevelStart.play()
 func UnPause():

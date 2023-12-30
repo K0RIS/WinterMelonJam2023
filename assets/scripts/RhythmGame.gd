@@ -20,7 +20,7 @@ var _last_song_pos = 0
 var start = 0
 
 signal beat
-
+signal GettingFaster
 func get_faster():
 	$PrincipalTrack.pitch_scale += 0.5
 	$FluteTrack.pitch_scale += 0.5
@@ -53,7 +53,7 @@ func _time_to_beat(song_position: float):
 func _physics_process(delta):
 	_current_time = principal_track.get_playback_position()
 	if _current_time < _last_song_pos:
-		get_faster()
+		emit_signal("GettingFaster")
 	_last_song_pos = _current_time
 	_current_time += AudioServer.get_time_since_last_mix()
 	_current_time -= AudioServer.get_output_latency()
