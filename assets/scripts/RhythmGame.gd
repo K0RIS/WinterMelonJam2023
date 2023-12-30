@@ -35,8 +35,9 @@ func start_track():
 	principal_track.play(start)
 	flute_track.play(start)
 	combo_track.play(start)
+	$FluteDelay.wait_time = flute_delay
 	$FluteDelay.start()
-
+	
 func stop_track():
 	principal_track.stop()
 	flute_track.stop()
@@ -47,6 +48,7 @@ func _ready():
 	_sec_per_beat = Engine.physics_ticks_per_second / (bpm * beat_divisor)
 	base_bpm = bpm
 	self.position = $"../..".position
+	$FluteDelay.wait_time = flute_delay
 
 
 func _time_to_beat(song_position: float):

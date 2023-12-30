@@ -12,6 +12,7 @@ position = Vector2(298, 405)
 
 [node name="RhythmGame" parent="SnakeCharmer/Node" index="0"]
 bpm = 95.0
+flute_delay = 2.052
 
 [node name="PrincipalTrack" parent="SnakeCharmer/Node/RhythmGame" index="0"]
 stream = ExtResource("2_tosxs")
