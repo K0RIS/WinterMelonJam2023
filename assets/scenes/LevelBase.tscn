@@ -23,6 +23,7 @@ size = Vector2(702, 49)
 script = ExtResource("1_02c7m")
 
 [node name="ReadyUpScreen" parent="." instance=ExtResource("2_edh7w")]
+visible = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(960, 540)
@@ -68,5 +69,8 @@ shape = SubResource("RectangleShape2D_0airp")
 position = Vector2(347, 326)
 metadata/_edit_group_ = true
 
+[connection signal="finished" from="SnakeCharmer/Node/RhythmGame/PrincipalTrack" to="." method="_on_principal_track_finished"]
+
 [editable path="EnvironmentalAreas"]
 [editable path="SnakeCharmer"]
+[editable path="SnakeCharmer/Node/RhythmGame"]

@@ -15,9 +15,16 @@ var _sec_per_beat = 0
 var _current_time: float = 0.0
 var _current_beat: int = 0
 var _last_beat: int = 0
+var _last_song_pos = 0
 var start = 0
 
 signal beat
+
+func get_faster():
+	$PrincipalTrack.pitch_scale += 0.1
+	$FluteTrack.pitch_scale += 0.1
+	$ComboTrack.pitch_scale += 0.1
+	print("FASTER!")
 
 func start_track():
 	#$Timer.start()
@@ -38,7 +45,10 @@ func _time_to_beat(song_position: float):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	_current_time = principal_track.get_playback_position() 
+	_current_time = principal_track.get_playback_position()
+	if _current_time < _last_song_pos:
+		get_faster()
+	_last_song_pos = _current_time
 	_current_time += AudioServer.get_time_since_last_mix()
 	_current_time -= AudioServer.get_output_latency()
 	_current_beat = _time_to_beat(_current_time)
