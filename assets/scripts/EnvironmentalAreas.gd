@@ -5,12 +5,14 @@ extends Node2D
 @onready var placeholder_meter = $Node2D/PlaceholderArea/PlaceholderMeter
 
 @onready var crowd_one = $Node2D/CrowdArea/AnimatedSprite2D
-@onready var crowd_two = $Node2D/PlaceholderArea/PlaceholderMeter/AnimatedSprite2D2
+@onready var crowd_two = $Node2D/PlaceholderArea/AnimatedSprite2D2
 
 @onready var snake = $Node2D/SnakeArea/Snake
 
+signal snake_lose
+
 func _on_snake_meter_bar_empty():
-	pass # Replace with function body.
+	emit_signal("snake_lose")
 
 
 func _on_charm_meter_bar_empty():

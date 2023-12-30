@@ -1,13 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://dl8tbmqlmed3s"]
+[gd_scene load_steps=10 format=3 uid="uid://dl8tbmqlmed3s"]
 
 [ext_resource type="Script" path="res://assets/scripts/EnvironmentalAreas.gd" id="1_ufwa4"]
 [ext_resource type="PackedScene" uid="uid://br3n44tptuhlc" path="res://assets/scenes/Snake.tscn" id="2_gsgy3"]
+[ext_resource type="Texture2D" uid="uid://gyru0gcwiol6" path="res://assets/sprites/circle.svg" id="3_4uf4f"]
+[ext_resource type="Shader" path="res://assets/scenes/Note.gdshader" id="3_36evs"]
 [ext_resource type="Script" path="res://assets/scripts/Meter.gd" id="3_kv1wc"]
 [ext_resource type="PackedScene" uid="uid://dxynt56u880ym" path="res://assets/scenes/rock_thrower.tscn" id="4_nmovu"]
 [ext_resource type="PackedScene" uid="uid://djmbu4rbud5of" path="res://CrowdMember.tscn" id="4_v1eul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k3a8"]
 size = Vector2(320, 540)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1rxcw"]
+shader = ExtResource("3_36evs")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 1.25
+shader_parameter/pattern = 2
+shader_parameter/inside = true
+shader_parameter/add_margins = false
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [node name="EnvironmentalAreas" type="Node2D"]
 script = ExtResource("1_ufwa4")
@@ -23,31 +34,26 @@ shape = SubResource("RectangleShape2D_4k3a8")
 [node name="Snake" parent="Node2D/SnakeArea" instance=ExtResource("2_gsgy3")]
 position = Vector2(0, 106)
 
-[node name="SnakeMeter" type="ProgressBar" parent="Node2D/SnakeArea"]
+[node name="SnakeMeter" type="TextureProgressBar" parent="Node2D/SnakeArea" groups=["SnakeMeter"]]
+modulate = Color(0.5, 100, 0.5, 1)
+material = SubResource("ShaderMaterial_1rxcw")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -177.5
-offset_top = -23.5
-offset_right = 177.5
-offset_bottom = 23.5
+offset_left = -59.5
+offset_top = -59.5
+offset_right = 59.5
+offset_bottom = 59.5
 grow_horizontal = 2
 grow_vertical = 2
 step = 0.0
 value = 50.0
+fill_mode = 4
+texture_progress = ExtResource("3_4uf4f")
 script = ExtResource("3_kv1wc")
 metadata/_edit_group_ = true
-
-[node name="Label" type="Label" parent="Node2D/SnakeArea/SnakeMeter"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Snake"
 
 [node name="CrowdArea" type="Area2D" parent="Node2D"]
 position = Vector2(-320, 0)
@@ -55,35 +61,28 @@ position = Vector2(-320, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CrowdArea"]
 shape = SubResource("RectangleShape2D_4k3a8")
 
-[node name="CharmMeter" type="ProgressBar" parent="Node2D/CrowdArea"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -177.5
-offset_top = -23.5
-offset_right = 177.5
-offset_bottom = 23.5
-grow_horizontal = 2
-grow_vertical = 2
-value = 50.0
-script = ExtResource("3_kv1wc")
-metadata/_edit_group_ = true
+[node name="AnimatedSprite2D" parent="Node2D/CrowdArea" instance=ExtResource("4_v1eul")]
+position = Vector2(-106, 207)
+frame_progress = 0.0
 
-[node name="Label" type="Label" parent="Node2D/CrowdArea/CharmMeter"]
-layout_mode = 1
+[node name="CharmMeter" type="TextureProgressBar" parent="Node2D/CrowdArea"]
+modulate = Color(0.5, 100, 0.5, 1)
+material = SubResource("ShaderMaterial_1rxcw")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -59.5
+offset_top = -59.5
+offset_right = 59.5
+offset_bottom = 59.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Charm"
+step = 0.0
+value = 50.0
+fill_mode = 4
+texture_progress = ExtResource("3_4uf4f")
+script = ExtResource("3_kv1wc")
 metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" parent="Node2D/CrowdArea" instance=ExtResource("4_v1eul")]
-position = Vector2(-112, 210)
-frame_progress = 0.0
 
 [node name="PlaceholderArea" type="Area2D" parent="Node2D"]
 position = Vector2(320, 7.62939e-06)
@@ -91,35 +90,28 @@ position = Vector2(320, 7.62939e-06)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/PlaceholderArea"]
 shape = SubResource("RectangleShape2D_4k3a8")
 
-[node name="PlaceholderMeter" type="ProgressBar" parent="Node2D/PlaceholderArea"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -177.5
-offset_top = -23.5
-offset_right = 177.5
-offset_bottom = 23.5
-grow_horizontal = 2
-grow_vertical = 2
-value = 50.0
-script = ExtResource("3_kv1wc")
+[node name="AnimatedSprite2D2" parent="Node2D/PlaceholderArea" instance=ExtResource("4_v1eul")]
+position = Vector2(106, 206)
+frame_progress = 0.0
+flip_h = true
 
-[node name="Label" type="Label" parent="Node2D/PlaceholderArea/PlaceholderMeter"]
-layout_mode = 1
+[node name="PlaceholderMeter" type="TextureProgressBar" parent="Node2D/PlaceholderArea"]
+modulate = Color(0.5, 100, 0.5, 1)
+material = SubResource("ShaderMaterial_1rxcw")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -59.5
+offset_top = -59.5
+offset_right = 59.5
+offset_bottom = 59.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Place Holder"
-metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D2" parent="Node2D/PlaceholderArea/PlaceholderMeter" instance=ExtResource("4_v1eul")]
-position = Vector2(289.5, 233.5)
-frame_progress = 0.0
-flip_h = true
+step = 0.0
+value = 50.0
+fill_mode = 4
+texture_progress = ExtResource("3_4uf4f")
+script = ExtResource("3_kv1wc")
 
 [node name="RockThrower" parent="." instance=ExtResource("4_nmovu")]
 position = Vector2(6, 399)

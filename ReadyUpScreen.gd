@@ -11,6 +11,6 @@ func _process(delta):
 	if Input.is_action_just_pressed("Start_Level") and CanStart:
 		CanStart = false
 		$AnimationPlayer.play("Start")
-
+		$LevelStart.play()
 func UnPause():
 	get_tree().paused = false

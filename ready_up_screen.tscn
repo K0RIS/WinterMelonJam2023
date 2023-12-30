@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvlt82ssfcm2m"]
+[gd_scene load_steps=8 format=3 uid="uid://bvlt82ssfcm2m"]
 
 [ext_resource type="Script" path="res://ReadyUpScreen.gd" id="1_u37yj"]
 [ext_resource type="Theme" uid="uid://dfq23uexcywtw" path="res://assets/scenes/PixelFont.tres" id="2_m6s3u"]
+[ext_resource type="AudioStream" uid="uid://c40goqd7qvumr" path="res://assets/sound/SoundEffects/Level_Select.wav" id="3_ci6du"]
 
 [sub_resource type="Animation" id="Animation_seq6w"]
 length = 0.001
@@ -75,7 +76,6 @@ _data = {
 
 [node name="ReadyUpScreen" type="CanvasLayer"]
 process_mode = 3
-visible = false
 script = ExtResource("1_u37yj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -95,8 +95,8 @@ color = Color(0.133333, 0.133333, 0.133333, 0.596078)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 4800.0
-offset_bottom = 2603.86
+offset_right = 8640.0
+offset_bottom = 4763.86
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_m6s3u")
@@ -116,3 +116,7 @@ theme = ExtResource("2_m6s3u")
 text = "(Press space to start)"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="LevelStart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ci6du")
+bus = &"SFX"

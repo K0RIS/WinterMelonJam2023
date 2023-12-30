@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://d10fviu00m7jp"]
+[gd_scene load_steps=12 format=3 uid="uid://d10fviu00m7jp"]
 
 [ext_resource type="Script" path="res://assets/scripts/LevelBase.gd" id="1_02c7m"]
 [ext_resource type="PackedScene" uid="uid://bvlt82ssfcm2m" path="res://ready_up_screen.tscn" id="2_edh7w"]
 [ext_resource type="PackedScene" uid="uid://cvbr3f3sf14b3" path="res://assets/scenes/SnakeCharmer.tscn" id="3_mo7sc"]
 [ext_resource type="Texture2D" uid="uid://m8afyailm271" path="res://assets/sprites/streetBG.png" id="3_ysgir"]
 [ext_resource type="PackedScene" uid="uid://dl8tbmqlmed3s" path="res://assets/scenes/EnvironmentalAreas.tscn" id="4_05wpu"]
+[ext_resource type="PackedScene" uid="uid://cc4ymdswqj1ln" path="res://assets/scenes/LoseScreen.tscn" id="6_qypl3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vlu4"]
 normal = Vector2(0, 1)
@@ -20,11 +21,10 @@ normal = Vector2(-1, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0airp"]
 size = Vector2(702, 49)
 
-[node name="Level" type="Node"]
+[node name="Level2" type="Node"]
 script = ExtResource("1_02c7m")
 
 [node name="ReadyUpScreen" parent="." instance=ExtResource("2_edh7w")]
-visible = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(960, 540)
@@ -71,6 +71,11 @@ shape = SubResource("RectangleShape2D_0airp")
 position = Vector2(296, 433)
 metadata/_edit_group_ = true
 
+[node name="LoseScreen" parent="." instance=ExtResource("6_qypl3")]
+visible = false
+
+[connection signal="snake_lose" from="EnvironmentalAreas" to="." method="_on_environmental_areas_snake_lose"]
+[connection signal="died" from="SnakeCharmer" to="." method="_on_snake_charmer_died"]
 [connection signal="finished" from="SnakeCharmer/Node/RhythmGame/PrincipalTrack" to="." method="_on_principal_track_finished"]
 
 [editable path="EnvironmentalAreas"]

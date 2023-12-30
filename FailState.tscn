@@ -1,0 +1,173 @@
+[gd_scene load_steps=13 format=3 uid="uid://8e6kl57b3mv0"]
+
+[ext_resource type="Script" path="res://FailState.gd" id="1_ffv0f"]
+[ext_resource type="Texture2D" uid="uid://dv1pdie8igfsf" path="res://assets/UiAsset/cyan_square_30.png" id="2_brc45"]
+[ext_resource type="Texture2D" uid="uid://dc6tibj77kmvf" path="res://assets/UiAsset/cyan_pressed_square_29.png" id="3_2tvgk"]
+[ext_resource type="Theme" uid="uid://b33upsigydajd" path="res://assets/UiAsset/PixelFont.tres" id="4_q68cs"]
+[ext_resource type="Texture2D" uid="uid://dplk4kucvjwiy" path="res://assets/UiAsset/cyan_square_3.png" id="5_amwm7"]
+[ext_resource type="Texture2D" uid="uid://b6brbbhb8byv2" path="res://assets/UiAsset/cyan_pressed_square_2.png" id="6_t1a5m"]
+[ext_resource type="AudioStream" uid="uid://c40goqd7qvumr" path="res://assets/sound/SoundEffects/Level_Select.wav" id="7_tbssu"]
+
+[sub_resource type="Animation" id="Animation_seq6w"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ept0x"]
+resource_name = "Start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"UnPause"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8jjec"]
+resource_name = "failstate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_0hcht"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nfs0x"]
+_data = {
+"RESET": SubResource("Animation_seq6w"),
+"Start": SubResource("Animation_ept0x"),
+"failstate": SubResource("Animation_8jjec"),
+"idle": SubResource("Animation_0hcht")
+}
+
+[node name="failState" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ffv0f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nfs0x")
+}
+
+[node name="TextureRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.133333, 0.133333, 0.133333, 0.596078)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(960, 540)
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 240
+
+[node name="Control" type="Control" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MainButtons" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(960, 540)
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/MainButtons"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Retry" type="TextureButton" parent="CenterContainer/HBoxContainer/MainButtons/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("2_brc45")
+texture_pressed = ExtResource("3_2tvgk")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/MainButtons/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_q68cs")
+theme_override_font_sizes/font_size = 70
+text = "Retry?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="HBoxContainer" parent="CenterContainer/HBoxContainer/MainButtons"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Home" type="TextureButton" parent="CenterContainer/HBoxContainer/MainButtons/VBoxContainer3"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("5_amwm7")
+texture_pressed = ExtResource("6_t1a5m")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/MainButtons/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("4_q68cs")
+theme_override_font_sizes/font_size = 70
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 239.0
+offset_top = 60.0
+offset_right = 651.0
+offset_bottom = 124.0
+size_flags_horizontal = 4
+theme = ExtResource("4_q68cs")
+theme_override_font_sizes/font_size = 70
+text = "You LOst. . ."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LostSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_tbssu")
+pitch_scale = 0.55
+bus = &"SFX"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/MainButtons/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/MainButtons/VBoxContainer3/Home" to="." method="_on_home_pressed"]

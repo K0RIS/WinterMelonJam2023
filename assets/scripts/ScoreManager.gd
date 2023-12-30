@@ -51,12 +51,17 @@ func _physics_process(delta):
 	AudioServer.set_bus_volume_db(bus_indices.Combo, _combo_volume_db)
 
 func break_combo():
+	for meter in get_tree().get_nodes_in_group("SnakeMeter"):
+		meter.value -= 5
+	for snake in get_tree().get_nodes_in_group("snake"):
+		snake.on_hit()
+	
 	if current_combo >= 10 and _target_combo_volume_db == 0:
 		wrong_note_player.stream = WRONG_NOTE[9]
 		wrong_note_player.play()
 		
 	current_combo = 0
-	combo.text = "x" + str(current_combo)
+	combo.text = str(current_combo)
 	score.text = str(current_score)
 	_target_combo_volume_db = -80
 	AudioServer.set_bus_mute(bus_indices.Ney, true)
