@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjve31n4jioao"]
+[gd_scene load_steps=28 format=3 uid="uid://bjve31n4jioao"]
 
 [ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_m3phr"]
+[ext_resource type="Texture2D" uid="uid://m8afyailm271" path="res://assets/sprites/streetBG.png" id="2_0scuu"]
 [ext_resource type="Texture2D" uid="uid://bqx06lfcumfn" path="res://assets/sprites/buttons/button_right.png" id="2_77qa7"]
 [ext_resource type="Texture2D" uid="uid://b6kdr7lp6bray" path="res://assets/sprites/buttons/button_right_pressed.png" id="3_0u4fl"]
 [ext_resource type="Texture2D" uid="uid://ca8yhvr7ribg" path="res://assets/UiAsset/cyan_square_7.png" id="4_llu73"]
@@ -10,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://veota7hst1lu" path="res://assets/UiAsset/cyan_pressed_square_1.png" id="7_mtyf8"]
 [ext_resource type="Texture2D" uid="uid://dplk4kucvjwiy" path="res://assets/UiAsset/cyan_square_3.png" id="7_yaxq6"]
 [ext_resource type="Texture2D" uid="uid://b6brbbhb8byv2" path="res://assets/UiAsset/cyan_pressed_square_2.png" id="8_3v8t0"]
+[ext_resource type="Texture2D" uid="uid://bmb62n2rdya81" path="res://assets/UiAsset/cyan_square_23.png" id="8_4ro7q"]
+[ext_resource type="Texture2D" uid="uid://bniugrpfcgklj" path="res://assets/UiAsset/cyan_pressed_square_22.png" id="9_kk146"]
 [ext_resource type="Theme" uid="uid://b33upsigydajd" path="res://assets/UiAsset/PixelFont.tres" id="10_hk0rq"]
 [ext_resource type="AudioStream" uid="uid://cdu5g04g7epqy" path="res://assets/sound/SoundEffects/Menu_Select.wav" id="13_b1tm6"]
 [ext_resource type="Texture2D" uid="uid://b500vmsrqgkv" path="res://assets/UiAsset/green_right_slider.png" id="13_pornp"]
@@ -21,6 +24,45 @@
 
 [sub_resource type="Animation" id="Animation_scoy6"]
 length = 0.001
+
+[sub_resource type="Animation" id="Animation_f2x6k"]
+resource_name = "ShowControls"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Controls:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Level Ui:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Settings Ui:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_vvwg4"]
 resource_name = "ShowLevels"
@@ -99,6 +141,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Controls:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_sjnvu"]
 resource_name = "ShowSettings"
@@ -142,6 +196,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u3gk4"]
 _data = {
 "RESET": SubResource("Animation_scoy6"),
+"ShowControls": SubResource("Animation_f2x6k"),
 "ShowLevels": SubResource("Animation_vvwg4"),
 "ShowMain": SubResource("Animation_oo7u1"),
 "ShowSettings": SubResource("Animation_sjnvu")
@@ -149,6 +204,14 @@ _data = {
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_m3phr")
+
+[node name="SettingsBackGround" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_0scuu")
 
 [node name="MainMenmuButtons" type="Control" parent="."]
 layout_mode = 3
@@ -170,7 +233,7 @@ layout_mode = 2
 [node name="MainButtons" type="VBoxContainer" parent="MainMenmuButtons/CenterContainer/HBoxContainer"]
 custom_minimum_size = Vector2(960, 540)
 layout_mode = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 40
 alignment = 1
 metadata/_edit_group_ = true
 
@@ -193,6 +256,8 @@ metadata/_edit_group_ = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("10_hk0rq")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 70
 text = "Start"
 horizontal_alignment = 1
@@ -215,8 +280,34 @@ metadata/_edit_group_ = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("10_hk0rq")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 70
 text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer4" type="HBoxContainer" parent="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="controls" type="TextureButton" parent="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer4"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("8_4ro7q")
+texture_pressed = ExtResource("9_kk146")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("10_hk0rq")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 70
+text = "Controls"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -237,6 +328,8 @@ metadata/_edit_group_ = true
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("10_hk0rq")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 70
 text = "Quit"
 horizontal_alignment = 1
@@ -259,6 +352,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -9.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0117647, 0.301961, 0.435294, 1)
@@ -426,6 +521,7 @@ offset_bottom = -365.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(6, 6)
+theme_override_constants/separation = 5
 metadata/_edit_group_ = true
 
 [node name="level1" type="TextureButton" parent="Level Ui/VBoxContainer"]
@@ -442,15 +538,83 @@ texture_normal = ExtResource("17_47xhd")
 texture_pressed = ExtResource("18_ag4yr")
 stretch_mode = 4
 
+[node name="Controls" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_ncv2x")
+
+[node name="SettingsBackGround" type="ColorRect" parent="Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0117647, 0.301961, 0.435294, 1)
+
+[node name="Back" type="TextureButton" parent="Controls"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 878.0
+offset_top = 462.0
+offset_right = 961.0
+offset_bottom = 542.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("7_yaxq6")
+texture_pressed = ExtResource("8_3v8t0")
+stretch_mode = 4
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Controls"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 1453.0
+offset_bottom = 153.0
+theme = ExtResource("10_hk0rq")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = " -Use the arrow keys for the flute
+ notes when the colored 
+arrows fall on top of the buttons!"
+
+[node name="Label2" type="Label" parent="Controls"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 178.0
+offset_right = 937.0
+offset_bottom = 469.0
+theme = ExtResource("10_hk0rq")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "-Use WSAD to move near unhappy
+crowd members to make them happy
+ANd Do not get hit by the rocks
+-Get hit by 4 rocks you lose
+-Do not let the snake get Unhappy
+-Play the right notes next to the
+snake to make it happy"
+
 [connection signal="button_down" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer/Levels" to="." method="SoundEffect"]
 [connection signal="pressed" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer/Levels" to="." method="_on_levels_pressed"]
 [connection signal="button_down" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer2/Settings" to="." method="SoundEffect"]
 [connection signal="pressed" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer2/Settings" to="." method="_on_settings_pressed"]
+[connection signal="button_down" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer4/controls" to="." method="SoundEffect"]
+[connection signal="pressed" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer4/controls" to="." method="Controls"]
 [connection signal="button_down" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer3/Quit" to="." method="SoundEffect"]
 [connection signal="pressed" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer3/Quit" to="." method="_on_quit_pressed"]
 [connection signal="button_down" from="Settings Ui/Back" to="." method="SoundEffect"]
 [connection signal="pressed" from="Settings Ui/Back" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="Settings Ui/VBoxContainer/Master" to="Settings Ui" method="_on_master_value_changed"]
+[connection signal="changed" from="Settings Ui/VBoxContainer/Music" to="." method="SoundEffect"]
 [connection signal="value_changed" from="Settings Ui/VBoxContainer/Music" to="Settings Ui" method="_on_music_value_changed"]
 [connection signal="value_changed" from="Settings Ui/VBoxContainer/SFX" to="Settings Ui" method="_on_sfx_value_changed"]
 [connection signal="button_down" from="Level Ui/Back" to="." method="SoundEffect"]
@@ -459,3 +623,5 @@ stretch_mode = 4
 [connection signal="pressed" from="Level Ui/VBoxContainer/level1" to="Level Ui" method="_on_level_1_pressed"]
 [connection signal="button_down" from="Level Ui/VBoxContainer/Level2" to="." method="SoundEffect"]
 [connection signal="pressed" from="Level Ui/VBoxContainer/Level2" to="Level Ui" method="_on_level_2_pressed"]
+[connection signal="button_down" from="Controls/Back" to="." method="SoundEffect"]
+[connection signal="pressed" from="Controls/Back" to="." method="_on_back_pressed"]

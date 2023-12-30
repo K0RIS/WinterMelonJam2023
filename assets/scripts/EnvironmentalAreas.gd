@@ -3,7 +3,7 @@ extends Node2D
 @onready var snake_meter = $Node2D/SnakeArea/SnakeMeter
 @onready var charm_meter = $Node2D/CrowdArea/CharmMeter
 @onready var placeholder_meter = $Node2D/PlaceholderArea/PlaceholderMeter
-
+signal DeathReason(reason)
 @onready var crowd_one = $Node2D/CrowdArea/AnimatedSprite2D
 @onready var crowd_two = $Node2D/PlaceholderArea/AnimatedSprite2D2
 
@@ -13,11 +13,11 @@ signal snake_lose
 
 func _on_snake_meter_bar_empty():
 	emit_signal("snake_lose")
-
+	emit_signal("DeathReason", "You died to the snake")
+	$"../LoseScreen/LostSound".play()
 
 func _on_charm_meter_bar_empty():
 	$RockThrower.StartTimer()
-
 
 func _on_place_holder_bar_empty():
 	$RockThrower2.StartTimer()

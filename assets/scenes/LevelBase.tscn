@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d10fviu00m7jp"]
+[gd_scene load_steps=17 format=3 uid="uid://d10fviu00m7jp"]
 
 [ext_resource type="Script" path="res://assets/scripts/LevelBase.gd" id="1_02c7m"]
 [ext_resource type="PackedScene" uid="uid://bvlt82ssfcm2m" path="res://ready_up_screen.tscn" id="2_edh7w"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://m8afyailm271" path="res://assets/sprites/streetBG.png" id="3_ysgir"]
 [ext_resource type="PackedScene" uid="uid://dl8tbmqlmed3s" path="res://assets/scenes/EnvironmentalAreas.tscn" id="4_05wpu"]
 [ext_resource type="PackedScene" uid="uid://cc4ymdswqj1ln" path="res://assets/scenes/LoseScreen.tscn" id="6_qypl3"]
+[ext_resource type="Theme" uid="uid://dfq23uexcywtw" path="res://assets/scenes/PixelFont.tres" id="7_mv13j"]
+[ext_resource type="Script" path="res://assets/scenes/SpeedUp.gd" id="7_yquhy"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vlu4"]
 normal = Vector2(0, 1)
@@ -20,6 +22,81 @@ normal = Vector2(-1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0airp"]
 size = Vector2(702, 49)
+
+[sub_resource type="Animation" id="Animation_rpw40"]
+resource_name = "SpeedUp"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpeedUp/RichTextLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["[shake rate=10.0 level=1 connected=0]Speeding Up![/shake]", "[shake rate=10.0 level=1 connected=0]3[/shake]", "[shake rate=10.0 level=1 connected=0]2[/shake]", "[shake rate=10.0 level=1 connected=0]1[/shake]"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpeedUp/RichTextLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(220, 477), Vector2(444, 474)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpeedUp/RichTextLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SnakeCharmer/Node/RhythmGame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"get_faster"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_s8xwu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpeedUp/RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(444, 474)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7ur5w"]
+_data = {
+"RESET": SubResource("Animation_s8xwu"),
+"SpeedUp": SubResource("Animation_rpw40")
+}
 
 [node name="Level2" type="Node"]
 script = ExtResource("1_02c7m")
@@ -69,15 +146,41 @@ shape = SubResource("RectangleShape2D_0airp")
 
 [node name="SnakeCharmer" parent="." instance=ExtResource("3_mo7sc")]
 position = Vector2(296, 433)
-metadata/_edit_group_ = true
 
 [node name="LoseScreen" parent="." instance=ExtResource("6_qypl3")]
 visible = false
 
+[node name="SpeedUp" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7ur5w")
+}
+script = ExtResource("7_yquhy")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SpeedUp"]
+visible = false
+offset_left = 444.0
+offset_top = 474.0
+offset_right = 968.0
+offset_bottom = 564.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("7_mv13j")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[shake rate=10.0 level=1 connected=0]1[/shake]"
+fit_content = true
+autowrap_mode = 0
+
+[connection signal="StartGame" from="ReadyUpScreen" to="." method="_on_ready_up_screen_start_game"]
 [connection signal="snake_lose" from="EnvironmentalAreas" to="." method="_on_environmental_areas_snake_lose"]
+[connection signal="DeathReason" from="SnakeCharmer" to="LoseScreen" method="ChangeDeathReason"]
 [connection signal="died" from="SnakeCharmer" to="." method="_on_snake_charmer_died"]
+[connection signal="GettingFaster" from="SnakeCharmer/Node/RhythmGame" to="SpeedUp" method="_on_rhythm_game_getting_faster"]
 [connection signal="finished" from="SnakeCharmer/Node/RhythmGame/PrincipalTrack" to="." method="_on_principal_track_finished"]
 
 [editable path="EnvironmentalAreas"]
 [editable path="SnakeCharmer"]
 [editable path="SnakeCharmer/Node/RhythmGame"]
+[editable path="LoseScreen"]

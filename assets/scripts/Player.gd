@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name SnakeCharmer
 signal  died
+signal DeathReason(reason)
 const SPEED = 800.0
 const JUMP_VELOCITY = -400.0
 
@@ -11,8 +12,8 @@ var CurrentArea :String
 signal CallMeterManager(CurrentArea)
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var MaxHealth = 3
-var CurrentHealth = 3
+var MaxHealth = 4
+var CurrentHealth = 4
 
 var taking_damage = false
 
@@ -63,6 +64,9 @@ func _on_rock_hit_box_area_shape_entered(area_rid, area, area_shape_index, local
 func  CheckHealth():
 	if CurrentHealth <= 0:
 		emit_signal("died")
+		$LostSound.play()
+		emit_signal("DeathReason","Died to Rocks")
+		$"../LoseScreen".Pause()
 
 func _on_hit_timer_timeout():
 	taking_damage = false

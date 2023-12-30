@@ -8,3 +8,9 @@ func _on_back_button_down():
 	
 func _process(delta):
 	final_score.text = str(ScoreManager.current_score)
+
+
+func Pause():
+	get_tree().paused = true
+func ChangeDeathReason(reason):
+	$CenterContainer/VBoxContainer/LostReason.text = "[shake rate=10.0 level=1 connected=0]"+reason+"[/shake]"

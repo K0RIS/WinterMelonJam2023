@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cc4ymdswqj1ln"]
+[gd_scene load_steps=7 format=3 uid="uid://cc4ymdswqj1ln"]
 
 [ext_resource type="Script" path="res://assets/scripts/LoseScreen.gd" id="1_27tja"]
 [ext_resource type="Texture2D" uid="uid://dplk4kucvjwiy" path="res://assets/UiAsset/cyan_square_3.png" id="1_l1y0f"]
 [ext_resource type="Texture2D" uid="uid://b6brbbhb8byv2" path="res://assets/UiAsset/cyan_pressed_square_2.png" id="2_a10ka"]
 [ext_resource type="Theme" uid="uid://dfq23uexcywtw" path="res://assets/scenes/PixelFont.tres" id="2_bs1rf"]
 [ext_resource type="AudioStream" uid="uid://cdu5g04g7epqy" path="res://assets/sound/SoundEffects/Menu_Select.wav" id="4_crcii"]
+[ext_resource type="AudioStream" uid="uid://c40goqd7qvumr" path="res://assets/sound/SoundEffects/Level_Select.wav" id="6_8rhev"]
 
 [node name="LoseScreen" type="Control"]
 layout_mode = 3
@@ -68,6 +69,17 @@ text = "0"
 fit_content = true
 autowrap_mode = 0
 
+[node name="LostReason" type="RichTextLabel" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_bs1rf")
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[shake rate=20.0 level=5 connected=1][/shake]"
+fit_content = true
+autowrap_mode = 0
+
 [node name="Back" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 1
@@ -90,6 +102,11 @@ metadata/_edit_group_ = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_crcii")
 pitch_scale = 0.95
+bus = &"SFX"
+
+[node name="LostSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8rhev")
+pitch_scale = 0.55
 bus = &"SFX"
 
 [connection signal="button_down" from="Back" to="." method="_on_back_button_down"]

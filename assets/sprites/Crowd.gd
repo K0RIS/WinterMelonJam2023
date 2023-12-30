@@ -23,7 +23,7 @@ func shoot():
 	
 func RandonVel():
 	var my_random_number = rng.randi_range(0, 4)
-	var ListOfSpeeds = [100,150,100,100,150]
+	var ListOfSpeeds = [200,150,100,250,150]
 	var NewSpeed = ListOfSpeeds[my_random_number]
 	return NewSpeed
 func RandonGrav():
