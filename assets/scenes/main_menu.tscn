@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://c28lfo3hm582w" path="res://assets/sprites/buttons/button_left.png" id="17_47xhd"]
 [ext_resource type="Texture2D" uid="uid://dqyr5ea1l5age" path="res://assets/sprites/buttons/button_left_pressed.png" id="18_ag4yr"]
 [ext_resource type="Texture2D" uid="uid://rxkkfhnfw6lp" path="res://assets/sprites/basket.png" id="22_85a2j"]
-[ext_resource type="AudioStream" uid="uid://colnwemsukgp3" path="res://assets/sound/music/level_two/Final_Principal.ogg" id="23_ykfo5"]
+[ext_resource type="AudioStream" uid="uid://bsyhdowu803ox" path="res://assets/scenes/Title_Snake.ogg" id="23_ry2ta"]
 
 [sub_resource type="Animation" id="Animation_scoy6"]
 length = 0.001
@@ -842,7 +842,7 @@ text = "-Use the arrow keys to play your flute when note blocks align with your 
 autowrap_mode = 3
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("23_ykfo5")
+stream = ExtResource("23_ry2ta")
 autoplay = true
 bus = &"Music"
 
