@@ -14,6 +14,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var MaxHealth = 3
 var CurrentHealth = 3
 
+var taking_damage = false
+
 func _physics_process(delta):
 	# Add the gravity.
 	velocity.y += gravity * delta
@@ -49,13 +51,19 @@ func _on_hit_box_area_shape_exited(area_rid, area, area_shape_index, local_shape
 func _on_timer_timeout():
 	emit_signal("CallMeterManager", CurrentArea)
 
-
-
-
 func _on_rock_hit_box_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	CurrentHealth -= 1
-	CheckHealth()
+	if not taking_damage:
+		CurrentHealth -= 1
+		CheckHealth()
+		taking_damage = true
+		sprite.modulate = Color(100, 100, 100)
+		$hit_timer.start()
 
 func  CheckHealth():
 	if CurrentHealth <= 0:
 		print("you lost due lost of health")
+
+
+func _on_hit_timer_timeout():
+	taking_damage = false
+	sprite.modulate = Color(1, 1, 1)
