@@ -9,6 +9,7 @@
 
 [node name="RhythmGame" parent="SnakeCharmer/Node" index="0"]
 bpm = 165.0
+flute_delay = 4.2
 
 [node name="PrincipalTrack" parent="SnakeCharmer/Node/RhythmGame" index="0"]
 stream = ExtResource("6_v5447")
