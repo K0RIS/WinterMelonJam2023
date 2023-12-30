@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d10fviu00m7jp"]
+[gd_scene load_steps=21 format=3 uid="uid://d10fviu00m7jp"]
 
 [ext_resource type="Script" path="res://assets/scripts/LevelBase.gd" id="1_02c7m"]
 [ext_resource type="PackedScene" uid="uid://bvlt82ssfcm2m" path="res://ready_up_screen.tscn" id="2_edh7w"]
@@ -24,6 +24,26 @@ normal = Vector2(-1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0airp"]
 size = Vector2(702, 49)
+
+[sub_resource type="Animation" id="Animation_iqvy7"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tqei4"]
+_data = {
+"fade": SubResource("Animation_iqvy7")
+}
 
 [sub_resource type="Animation" id="Animation_s8xwu"]
 length = 0.001
@@ -147,7 +167,6 @@ shape = SubResource("RectangleShape2D_0airp")
 [node name="EnvironmentalAreas" parent="." instance=ExtResource("4_05wpu")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -167,6 +186,11 @@ texture = ExtResource("9_0hdw5")
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("10_5samq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_tqei4")
+}
 
 [node name="SnakeCharmer" parent="." instance=ExtResource("3_mo7sc")]
 position = Vector2(296, 433)
@@ -202,6 +226,7 @@ wait_time = 3.0
 
 [connection signal="StartGame" from="ReadyUpScreen" to="." method="_on_ready_up_screen_start_game"]
 [connection signal="snake_lose" from="EnvironmentalAreas" to="." method="_on_environmental_areas_snake_lose"]
+[connection signal="animation_finished" from="HBoxContainer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="DeathReason" from="SnakeCharmer" to="LoseScreen" method="ChangeDeathReason"]
 [connection signal="died" from="SnakeCharmer" to="." method="_on_snake_charmer_died"]
 [connection signal="GettingFaster" from="SnakeCharmer/Node/RhythmGame" to="SpeedUp" method="_on_rhythm_game_getting_faster"]

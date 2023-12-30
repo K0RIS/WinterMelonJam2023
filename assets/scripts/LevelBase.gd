@@ -14,7 +14,6 @@ func start_game():
 	ScoreManager.score.text = "0"
 	ScoreManager.combo.text = "x0"
 	snake_charmer.rhythm_game.start_track()
-	$HBoxContainer.visible = true
 	$Timer.start()
 	
 
@@ -39,4 +38,8 @@ func _on_ready_up_screen_start_game():
 
 
 func _on_timer_timeout():
+	$HBoxContainer/AnimationPlayer.play("fade")
+
+
+func _on_animation_player_animation_finished(anim_name):
 	$HBoxContainer.visible = false
