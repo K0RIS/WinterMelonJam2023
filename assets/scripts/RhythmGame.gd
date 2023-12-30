@@ -19,6 +19,9 @@ var _last_beat: int = 0
 var _last_song_pos = 0
 var start = 0
 
+@export var flute_delay = 0.0
+var _allow_flute = false
+
 signal beat
 
 func get_faster():
@@ -32,6 +35,7 @@ func start_track():
 	principal_track.play(start)
 	flute_track.play(start)
 	combo_track.play(start)
+	$FluteDelay.start()
 
 func stop_track():
 	principal_track.stop()
@@ -59,7 +63,7 @@ func _physics_process(delta):
 	_current_time -= AudioServer.get_output_latency()
 	_current_beat = _time_to_beat(_current_time)
 	
-	if (_current_beat != _last_beat):
+	if (_current_beat != _last_beat and _allow_flute):
 		emit_signal("beat")
 	_last_beat = _current_beat
 	position.x = lerp(self.position.x, player.position.x, 0.1)
@@ -71,4 +75,4 @@ func _on_beat():
 
 
 func _on_timer_timeout():
-	pass # Replace with function body.
+	_allow_flute = true
