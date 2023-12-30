@@ -75,7 +75,6 @@ _data = {
 
 [node name="ReadyUpScreen" type="CanvasLayer"]
 process_mode = 3
-visible = false
 script = ExtResource("1_u37yj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -95,8 +94,8 @@ color = Color(0.133333, 0.133333, 0.133333, 0.596078)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 3840.0
-offset_bottom = 2063.86
+offset_right = 1920.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_m6s3u")
