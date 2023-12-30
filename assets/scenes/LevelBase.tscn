@@ -65,7 +65,7 @@ shape = SubResource("RectangleShape2D_0airp")
 [node name="EnvironmentalAreas" parent="." instance=ExtResource("4_05wpu")]
 
 [node name="SnakeCharmer" parent="." instance=ExtResource("3_mo7sc")]
-position = Vector2(347, 326)
+position = Vector2(350, 324)
 metadata/_edit_group_ = true
 
 [editable path="EnvironmentalAreas"]

@@ -58,6 +58,7 @@ func _on_rock_hit_box_area_shape_entered(area_rid, area, area_shape_index, local
 		taking_damage = true
 		sprite.modulate = Color(100, 100, 100)
 		$hit_timer.start()
+		$HitEffect.play()
 
 func  CheckHealth():
 	if CurrentHealth <= 0:

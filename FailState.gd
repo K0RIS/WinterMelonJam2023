@@ -17,9 +17,9 @@ func _on_retry_pressed():
 
 func _on_home_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://assets/scenes/main_menu.tscn")
+	get_tree().get_root().change_scene_to_file("res://assets/scenes/main_menu.tscn")
 
 func  FailState():
 	get_tree().paused = true
 	$AnimationPlayer.play("failstate")
-	$LostSound
+	$LostSound.play()
