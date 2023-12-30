@@ -165,14 +165,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 425.0
-offset_top = 11.0
-offset_right = -517.0
-offset_bottom = -427.0
+offset_left = 424.0
+offset_top = 44.0
+offset_right = -518.0
+offset_bottom = -394.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(5, 5)
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 metadata/_edit_group_ = true
 
 [node name="Start" type="TextureButton" parent="MainMenmuButtons/MainButtons"]
@@ -209,10 +209,10 @@ metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="MainMenmuButtons"]
 layout_mode = 2
-offset_left = 413.0
-offset_top = -17.0
-offset_right = 559.0
-offset_bottom = 52.0
+offset_left = 406.0
+offset_top = 5.0
+offset_right = 552.0
+offset_bottom = 74.0
 scale = Vector2(0.895, 0.895)
 theme = ExtResource("10_hk0rq")
 theme_override_font_sizes/font_size = 50
@@ -220,10 +220,10 @@ text = "Start"
 
 [node name="Label2" type="Label" parent="MainMenmuButtons"]
 layout_mode = 2
-offset_left = 397.0
-offset_top = 116.0
-offset_right = 577.0
-offset_bottom = 185.0
+offset_left = 393.0
+offset_top = 134.0
+offset_right = 573.0
+offset_bottom = 203.0
 scale = Vector2(0.895, 0.895)
 theme = SubResource("Theme_gayxk")
 theme_override_font_sizes/font_size = 50
@@ -231,10 +231,10 @@ text = "Levels"
 
 [node name="Label4" type="Label" parent="MainMenmuButtons"]
 layout_mode = 2
-offset_left = 422.0
-offset_top = 396.0
-offset_right = 538.0
-offset_bottom = 465.0
+offset_left = 416.0
+offset_top = 392.0
+offset_right = 532.0
+offset_bottom = 461.0
 scale = Vector2(0.895, 0.895)
 theme = ExtResource("10_hk0rq")
 theme_override_font_sizes/font_size = 50
@@ -242,16 +242,17 @@ text = "Quit"
 
 [node name="Label3" type="Label" parent="MainMenmuButtons"]
 layout_mode = 2
-offset_left = 373.0
-offset_top = 251.0
-offset_right = 607.0
-offset_bottom = 320.0
+offset_left = 374.0
+offset_top = 259.0
+offset_right = 608.0
+offset_bottom = 328.0
 scale = Vector2(0.895, 0.895)
 theme = ExtResource("10_hk0rq")
 theme_override_font_sizes/font_size = 50
 text = "Settings"
 
 [node name="Settings Ui" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
