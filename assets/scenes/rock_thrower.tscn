@@ -15,5 +15,6 @@ Rock = ExtResource("2_lf18x")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5yxbc")
+volume_db = -10.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

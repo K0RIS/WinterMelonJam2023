@@ -175,6 +175,7 @@ autowrap_mode = 0
 
 [connection signal="StartGame" from="ReadyUpScreen" to="." method="_on_ready_up_screen_start_game"]
 [connection signal="snake_lose" from="EnvironmentalAreas" to="." method="_on_environmental_areas_snake_lose"]
+[connection signal="DeathReason" from="SnakeCharmer" to="LoseScreen" method="ChangeDeathReason"]
 [connection signal="died" from="SnakeCharmer" to="." method="_on_snake_charmer_died"]
 [connection signal="GettingFaster" from="SnakeCharmer/Node/RhythmGame" to="SpeedUp" method="_on_rhythm_game_getting_faster"]
 [connection signal="finished" from="SnakeCharmer/Node/RhythmGame/PrincipalTrack" to="." method="_on_principal_track_finished"]
@@ -182,3 +183,4 @@ autowrap_mode = 0
 [editable path="EnvironmentalAreas"]
 [editable path="SnakeCharmer"]
 [editable path="SnakeCharmer/Node/RhythmGame"]
+[editable path="LoseScreen"]

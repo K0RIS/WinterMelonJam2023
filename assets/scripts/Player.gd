@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name SnakeCharmer
 signal  died
+signal DeathReason(reason)
 const SPEED = 800.0
 const JUMP_VELOCITY = -400.0
 
@@ -64,6 +65,7 @@ func  CheckHealth():
 	if CurrentHealth <= 0:
 		emit_signal("died")
 		$LostSound.play()
+		emit_signal("DeathReason","Died to Rocks")
 		$"../LoseScreen".Pause()
 
 func _on_hit_timer_timeout():

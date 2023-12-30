@@ -29,8 +29,10 @@ offset_bottom = 540.0
 mouse_filter = 2
 color = Color(1, 0, 0, 0.180392)
 
+[connection signal="DeathReason" from="EnvironmentalAreas" to="LoseScreen" method="ChangeDeathReason"]
 [connection signal="GettingFaster" from="SnakeCharmer/Node/RhythmGame" to="SpeedUp" method="_on_rhythm_game_getting_faster"]
 
 [editable path="EnvironmentalAreas"]
 [editable path="SnakeCharmer"]
 [editable path="SnakeCharmer/Node/RhythmGame"]
+[editable path="LoseScreen"]
