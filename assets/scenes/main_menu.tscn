@@ -1,25 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjve31n4jioao"]
+[gd_scene load_steps=20 format=3 uid="uid://bjve31n4jioao"]
 
 [ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_m3phr"]
 [ext_resource type="Texture2D" uid="uid://dv1pdie8igfsf" path="res://assets/UiAsset/cyan_square_30.png" id="2_1onor"]
 [ext_resource type="Texture2D" uid="uid://dc6tibj77kmvf" path="res://assets/UiAsset/cyan_pressed_square_29.png" id="3_76isd"]
-[ext_resource type="Texture2D" uid="uid://d1r8swc66bq16" path="res://assets/UiAsset/cyan_square_13.png" id="4_eb6aa"]
 [ext_resource type="Texture2D" uid="uid://ca8yhvr7ribg" path="res://assets/UiAsset/cyan_square_7.png" id="4_llu73"]
 [ext_resource type="Texture2D" uid="uid://b7o72dlxkxxn" path="res://assets/UiAsset/cyan_pressed_square_6.png" id="5_b7ybk"]
-[ext_resource type="Texture2D" uid="uid://cdake5ptk6xcb" path="res://assets/UiAsset/cyan_pressed_square_12.png" id="5_gkw1r"]
 [ext_resource type="Script" path="res://assets/scripts/Settings Ui.gd" id="6_hpvos"]
 [ext_resource type="Texture2D" uid="uid://b8jmetc03u7d4" path="res://assets/UiAsset/cyan_square_2.png" id="6_tr3ty"]
 [ext_resource type="Texture2D" uid="uid://veota7hst1lu" path="res://assets/UiAsset/cyan_pressed_square_1.png" id="7_mtyf8"]
 [ext_resource type="Texture2D" uid="uid://dplk4kucvjwiy" path="res://assets/UiAsset/cyan_square_3.png" id="7_yaxq6"]
 [ext_resource type="Texture2D" uid="uid://b6brbbhb8byv2" path="res://assets/UiAsset/cyan_pressed_square_2.png" id="8_3v8t0"]
-[ext_resource type="Theme" uid="uid://derawnhnqgv8s" path="res://assets/UiAsset/PixelFont.tres" id="10_hk0rq"]
-[ext_resource type="FontFile" uid="uid://x6s63b14lemt" path="res://assets/UiAsset/upheavtt.ttf" id="11_4embr"]
+[ext_resource type="Theme" uid="uid://b33upsigydajd" path="res://assets/UiAsset/PixelFont.tres" id="10_hk0rq"]
 [ext_resource type="AudioStream" uid="uid://c8pxyo87gn858" path="res://assets/sound/SoundEffects/click-menu-app-147357.mp3" id="13_annic"]
 [ext_resource type="Texture2D" uid="uid://b500vmsrqgkv" path="res://assets/UiAsset/green_right_slider.png" id="13_pornp"]
 [ext_resource type="Script" path="res://assets/scripts/Level Ui.gd" id="14_ncv2x"]
-
-[sub_resource type="Theme" id="Theme_gayxk"]
-default_font = ExtResource("11_4embr")
 
 [sub_resource type="Animation" id="Animation_scoy6"]
 length = 0.001
@@ -154,104 +148,98 @@ script = ExtResource("1_m3phr")
 
 [node name="MainMenmuButtons" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 
-[node name="MainButtons" type="VBoxContainer" parent="MainMenmuButtons"]
+[node name="CenterContainer" type="CenterContainer" parent="MainMenmuButtons"]
+custom_minimum_size = Vector2(960, 540)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 425.0
-offset_top = 11.0
-offset_right = -517.0
-offset_bottom = -427.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(5, 5)
-theme_override_constants/separation = 10
+offset_right = 960.0
+offset_bottom = 540.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenmuButtons/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 240
+
+[node name="Control" type="Control" parent="MainMenmuButtons/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="MainButtons" type="VBoxContainer" parent="MainMenmuButtons/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(960, 540)
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
 metadata/_edit_group_ = true
 
-[node name="Start" type="TextureButton" parent="MainMenmuButtons/MainButtons"]
-texture_filter = 1
+[node name="VBoxContainer" type="HBoxContainer" parent="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons"]
 layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Levels" type="TextureButton" parent="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 texture_normal = ExtResource("2_1onor")
 texture_pressed = ExtResource("3_76isd")
 stretch_mode = 4
 metadata/_edit_group_ = true
 
-[node name="Levels" type="TextureButton" parent="MainMenmuButtons/MainButtons"]
-texture_filter = 1
+[node name="Label" type="Label" parent="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("4_eb6aa")
-texture_pressed = ExtResource("5_gkw1r")
-stretch_mode = 4
-metadata/_edit_group_ = true
+size_flags_horizontal = 4
+theme = ExtResource("10_hk0rq")
+theme_override_font_sizes/font_size = 70
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Settings" type="TextureButton" parent="MainMenmuButtons/MainButtons"]
+[node name="VBoxContainer2" type="HBoxContainer" parent="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Settings" type="TextureButton" parent="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer2"]
 texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture_normal = ExtResource("4_llu73")
 texture_pressed = ExtResource("5_b7ybk")
 stretch_mode = 4
 metadata/_edit_group_ = true
 
-[node name="Quit" type="TextureButton" parent="MainMenmuButtons/MainButtons"]
+[node name="Label" type="Label" parent="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("10_hk0rq")
+theme_override_font_sizes/font_size = 70
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer3" type="HBoxContainer" parent="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Quit" type="TextureButton" parent="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer3"]
 texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture_normal = ExtResource("6_tr3ty")
 texture_pressed = ExtResource("7_mtyf8")
 stretch_mode = 4
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="MainMenmuButtons"]
+[node name="Label" type="Label" parent="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer3"]
 layout_mode = 2
-offset_left = 413.0
-offset_top = -17.0
-offset_right = 559.0
-offset_bottom = 52.0
-scale = Vector2(0.895, 0.895)
+size_flags_horizontal = 0
 theme = ExtResource("10_hk0rq")
-theme_override_font_sizes/font_size = 50
-text = "Start"
-
-[node name="Label2" type="Label" parent="MainMenmuButtons"]
-layout_mode = 2
-offset_left = 397.0
-offset_top = 116.0
-offset_right = 577.0
-offset_bottom = 185.0
-scale = Vector2(0.895, 0.895)
-theme = SubResource("Theme_gayxk")
-theme_override_font_sizes/font_size = 50
-text = "Levels"
-
-[node name="Label4" type="Label" parent="MainMenmuButtons"]
-layout_mode = 2
-offset_left = 422.0
-offset_top = 396.0
-offset_right = 538.0
-offset_bottom = 465.0
-scale = Vector2(0.895, 0.895)
-theme = ExtResource("10_hk0rq")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 70
 text = "Quit"
-
-[node name="Label3" type="Label" parent="MainMenmuButtons"]
-layout_mode = 2
-offset_left = 373.0
-offset_top = 251.0
-offset_right = 607.0
-offset_bottom = 320.0
-scale = Vector2(0.895, 0.895)
-theme = ExtResource("10_hk0rq")
-theme_override_font_sizes/font_size = 50
-text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Settings Ui" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -292,23 +280,27 @@ metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings Ui"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 351.0
-offset_top = 44.0
-offset_right = -527.0
-offset_bottom = -416.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = -61.0
+offset_right = 49.0
+offset_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3, 3)
+theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="Settings Ui/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("10_hk0rq")
-text = "Music"
+theme_override_font_sizes/font_size = 100
+text = "Master
+"
 
-[node name="Music" type="HSlider" parent="Settings Ui/VBoxContainer"]
+[node name="Master" type="HSlider" parent="Settings Ui/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("13_pornp")
@@ -317,12 +309,13 @@ theme_override_icons/tick = ExtResource("13_pornp")
 min_value = -30.0
 max_value = 0.0
 
-[node name="Sound" type="Label" parent="Settings Ui/VBoxContainer"]
+[node name="Label3" type="Label" parent="Settings Ui/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("10_hk0rq")
-text = "VFX"
+theme_override_font_sizes/font_size = 100
+text = "Music"
 
-[node name="Music2" type="HSlider" parent="Settings Ui/VBoxContainer"]
+[node name="Music" type="HSlider" parent="Settings Ui/VBoxContainer"]
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("13_pornp")
 theme_override_icons/grabber_highlight = ExtResource("13_pornp")
@@ -332,6 +325,27 @@ min_value = -30.0
 max_value = -2.0
 value = -2.0
 
+[node name="Label2" type="Label" parent="Settings Ui/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("10_hk0rq")
+theme_override_font_sizes/font_size = 100
+text = "SFX"
+
+[node name="SFX" type="HSlider" parent="Settings Ui/VBoxContainer"]
+layout_mode = 2
+theme_override_icons/grabber = ExtResource("13_pornp")
+theme_override_icons/grabber_highlight = ExtResource("13_pornp")
+theme_override_icons/grabber_disabled = ExtResource("13_pornp")
+theme_override_icons/tick = ExtResource("13_pornp")
+min_value = -30.0
+max_value = -2.0
+value = -2.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings Ui/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_u3gk4")
@@ -340,6 +354,7 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_annic")
 pitch_scale = 0.95
+bus = &"SFX"
 
 [node name="Level Ui" type="Control" parent="."]
 visible = false
@@ -440,20 +455,22 @@ texture_normal = ExtResource("2_1onor")
 texture_pressed = ExtResource("3_76isd")
 stretch_mode = 4
 
-[connection signal="button_down" from="MainMenmuButtons/MainButtons/Start" to="." method="SoundEffect"]
-[connection signal="pressed" from="MainMenmuButtons/MainButtons/Start" to="." method="_on_start_pressed"]
-[connection signal="button_down" from="MainMenmuButtons/MainButtons/Levels" to="." method="SoundEffect"]
-[connection signal="pressed" from="MainMenmuButtons/MainButtons/Levels" to="." method="_on_levels_pressed"]
-[connection signal="button_down" from="MainMenmuButtons/MainButtons/Settings" to="." method="SoundEffect"]
-[connection signal="pressed" from="MainMenmuButtons/MainButtons/Settings" to="." method="_on_settings_pressed"]
-[connection signal="button_down" from="MainMenmuButtons/MainButtons/Quit" to="." method="SoundEffect"]
-[connection signal="pressed" from="MainMenmuButtons/MainButtons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="button_down" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer/Levels" to="." method="SoundEffect"]
+[connection signal="pressed" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer/Levels" to="." method="_on_levels_pressed"]
+[connection signal="button_down" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer2/Settings" to="." method="SoundEffect"]
+[connection signal="pressed" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer2/Settings" to="." method="_on_settings_pressed"]
+[connection signal="button_down" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer3/Quit" to="." method="SoundEffect"]
+[connection signal="pressed" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer3/Quit" to="." method="_on_quit_pressed"]
 [connection signal="button_down" from="Settings Ui/Back" to="." method="SoundEffect"]
 [connection signal="pressed" from="Settings Ui/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Settings Ui/VBoxContainer/Master" to="Settings Ui" method="_on_master_value_changed"]
 [connection signal="value_changed" from="Settings Ui/VBoxContainer/Music" to="Settings Ui" method="_on_music_value_changed"]
-[connection signal="value_changed" from="Settings Ui/VBoxContainer/Music2" to="Settings Ui" method="_on_music_2_value_changed"]
+[connection signal="value_changed" from="Settings Ui/VBoxContainer/SFX" to="Settings Ui" method="_on_sfx_value_changed"]
 [connection signal="button_down" from="Level Ui/Back" to="." method="SoundEffect"]
 [connection signal="pressed" from="Level Ui/Back" to="." method="_on_back_pressed"]
 [connection signal="button_down" from="Level Ui/VBoxContainer/level1" to="." method="SoundEffect"]
+[connection signal="pressed" from="Level Ui/VBoxContainer/level1" to="Level Ui" method="_on_level_1_pressed"]
 [connection signal="button_down" from="Level Ui/VBoxContainer/Level2" to="." method="SoundEffect"]
+[connection signal="pressed" from="Level Ui/VBoxContainer/Level2" to="Level Ui" method="_on_level_2_pressed"]
 [connection signal="button_down" from="Level Ui/VBoxContainer/Level3" to="." method="SoundEffect"]
+[connection signal="pressed" from="Level Ui/VBoxContainer/Level3" to="Level Ui" method="_on_level_3_pressed"]

@@ -36,3 +36,4 @@ theme_override_font_sizes/font_size = 80
 text = "x0"
 
 [node name="WrongNotePlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"

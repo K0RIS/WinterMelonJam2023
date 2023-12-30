@@ -24,24 +24,26 @@ const WRONG_NOTE = [
 var current_combo = 0.0
 var current_score = 0.0
 
-var _combo_volume_db = -80.0
-var _target_combo_volume_db = -80.0
+var _combo_volume_db: float = -80.0
+var _target_combo_volume_db: float = -80.0
 
+var bus_indices: AudioBusIndices
 
-enum AudioBus {
-	Principal = 1,
-	Ney = 2,
-	Combo = 3
-}
-
+class AudioBusIndices:
+	var Principal = -1
+	var Ney = -1
+	var Combo = -1
 
 func _ready():
-	AudioServer.set_bus_volume_db(AudioBus.Combo, _combo_volume_db)
-	pass
+	bus_indices = AudioBusIndices.new()
+	bus_indices.Principal = AudioServer.get_bus_index("Principal")
+	bus_indices.Ney = AudioServer.get_bus_index("Ney")
+	bus_indices.Combo = AudioServer.get_bus_index("Combo")
+	AudioServer.set_bus_volume_db(bus_indices.Combo, _combo_volume_db)
 
 func _physics_process(delta):
-	_combo_volume_db = lerpf(_combo_volume_db, _target_combo_volume_db, 0.05)
-	AudioServer.set_bus_volume_db(AudioBus.Combo, _combo_volume_db)
+	_combo_volume_db = lerp(_combo_volume_db, _target_combo_volume_db, 0.05)
+	AudioServer.set_bus_volume_db(bus_indices.Combo, _combo_volume_db)
 
 func break_combo():
 	if current_combo >= 10 and _target_combo_volume_db == 0:
@@ -51,7 +53,7 @@ func break_combo():
 	current_combo = 0
 	combo.text = "x" + str(current_combo)
 	_target_combo_volume_db = -80
-	AudioServer.set_bus_mute(AudioBus.Ney, true)
+	AudioServer.set_bus_mute(bus_indices.Ney, true)
 	
 
 
@@ -63,7 +65,7 @@ func add_to_combo():
 		wrong_note_player.stream = WRONG_NOTE[8]
 		wrong_note_player.play()
 	combo.text = "x" + str(current_combo)
-	AudioServer.set_bus_mute(AudioBus.Ney, false)
+	AudioServer.set_bus_mute(bus_indices.Ney, false)
 
 
 func add_points(Dist):
