@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=3 uid="uid://dux2m33r514qd"]
+
+[ext_resource type="Script" path="res://ReadyUpScreen.gd" id="1_u37yj"]
+[ext_resource type="Theme" uid="uid://chel21cide8ow" path="res://assets/scenes/PixelFont.tres" id="2_m6s3u"]
+
+[sub_resource type="Animation" id="Animation_ept0x"]
+resource_name = "Start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:text")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1.1, 2.1, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": ["(Press space to start)", "3", "2", "1", "0
+"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"UnPause"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0hcht"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 443.865), Vector2(960, 360.295)]
+}
+
+[sub_resource type="Animation" id="Animation_seq6w"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nfs0x"]
+_data = {
+"RESET": SubResource("Animation_seq6w"),
+"Start": SubResource("Animation_ept0x"),
+"idle": SubResource("Animation_0hcht")
+}
+
+[node name="ReadyUpScreen" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_u37yj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nfs0x")
+}
+
+[node name="TextureRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.133333, 0.133333, 0.133333, 0.596078)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 983.865
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_m6s3u")
+text = "Ready? "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 51.0
+offset_bottom = 1.13501
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_m6s3u")
+text = "(Press space to start)"
+horizontal_alignment = 1
+vertical_alignment = 1

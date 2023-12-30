@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d10fviu00m7jp"]
+[gd_scene load_steps=9 format=3 uid="uid://d10fviu00m7jp"]
 
 [ext_resource type="Script" path="res://assets/scripts/LevelBase.gd" id="1_02c7m"]
+[ext_resource type="PackedScene" uid="uid://dux2m33r514qd" path="res://ready_up_screen.tscn" id="2_edh7w"]
 [ext_resource type="PackedScene" uid="uid://cvbr3f3sf14b3" path="res://assets/scenes/SnakeCharmer.tscn" id="3_mo7sc"]
 [ext_resource type="PackedScene" uid="uid://dl8tbmqlmed3s" path="res://assets/scenes/EnvironmentalAreas.tscn" id="4_05wpu"]
 
@@ -17,6 +18,9 @@ normal = Vector2(-1, 0)
 
 [node name="Level" type="Node"]
 script = ExtResource("1_02c7m")
+
+[node name="ReadyUpScreen" parent="." instance=ExtResource("2_edh7w")]
+visible = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(960, 540)
