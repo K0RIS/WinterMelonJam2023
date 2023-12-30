@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://k3uboy304rg2"]
+[gd_scene load_steps=5 format=3 uid="uid://k3uboy304rg2"]
 
-[ext_resource type="Texture2D" uid="uid://cuvq7up0uk2f8" path="res://assets/icon.svg" id="1_wevyn"]
 [ext_resource type="Script" path="res://assets/scripts/Note.gd" id="2_6msk5"]
+[ext_resource type="Shader" path="res://assets/scenes/Note.gdshader" id="2_8brwn"]
+[ext_resource type="Texture2D" uid="uid://bkflaq225r2e8" path="res://assets/sprites/buttons/left.png" id="2_51owk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tfyr6"]
+shader = ExtResource("2_8brwn")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 2
+shader_parameter/inside = false
+shader_parameter/add_margins = false
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [node name="Note" type="Node2D" groups=["note"]]
 script = ExtResource("2_6msk5")
 
 [node name="NoteTexture" type="TextureRect" parent="."]
+self_modulate = Color(4, 3, 1, 1)
+material = SubResource("ShaderMaterial_tfyr6")
 custom_minimum_size = Vector2(50, 50)
 anchors_preset = 5
 anchor_left = 0.5
@@ -17,5 +29,5 @@ offset_bottom = 50.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_wevyn")
+texture = ExtResource("2_51owk")
 expand_mode = 5

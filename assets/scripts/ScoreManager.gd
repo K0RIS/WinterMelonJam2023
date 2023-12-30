@@ -70,11 +70,11 @@ func add_to_combo():
 
 func add_points(Dist):
 	var percent_of_point 
-	if Dist > 50:
+	if Dist > 25:
 		status.text = "Too soon"
 		break_combo()
 		wrong_note()
-	elif Dist <- 50:
+	elif Dist < -25:
 		status.text = "Too slow"
 		break_combo()
 		wrong_note()
