@@ -15,7 +15,10 @@ func start_game():
 
 
 func _on_environmental_areas_snake_lose():
-	print("snake death")
+	$EnvironmentalAreas/RockThrower.StopTimer()
+	$EnvironmentalAreas/RockThrower2.StopTimer()
+	ScoreManager.visible = false
+	lose_screen.visible = true
 	
 
 func _on_snake_charmer_died():
