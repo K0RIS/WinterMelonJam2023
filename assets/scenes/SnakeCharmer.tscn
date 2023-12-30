@@ -30,6 +30,14 @@ autostart = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_vl6t2")
 
+[node name="RockHitBox" type="Area2D" parent="."]
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RockHitBox"]
+shape = SubResource("RectangleShape2D_x20p6")
+debug_color = Color(0.85098, 0.25098, 0.690196, 0.419608)
+
 [node name="Node" type="Node" parent="."]
 
 [node name="RhythmGame" parent="Node" instance=ExtResource("2_mo0dp")]
@@ -37,3 +45,4 @@ texture = ExtResource("3_vl6t2")
 [connection signal="area_shape_entered" from="HitBox" to="." method="_on_hit_box_area_shape_entered"]
 [connection signal="area_shape_exited" from="HitBox" to="." method="_on_hit_box_area_shape_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_shape_entered" from="RockHitBox" to="." method="_on_rock_hit_box_area_shape_entered"]
