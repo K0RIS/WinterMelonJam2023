@@ -5,7 +5,7 @@ var CanStart = true
 func _ready():
 	pass # Replace with function body.
 	$AnimationPlayer.play("idle")
-	get_tree().paused = true
+	#get_tree().paused = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("Start_Level") and CanStart:

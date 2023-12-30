@@ -11,13 +11,11 @@ func _on_snake_meter_bar_empty():
 
 
 func _on_charm_meter_bar_empty():
-	#$RockThrower.StartTimer()
-	pass
+	$RockThrower.StartTimer()
 
 
 func _on_place_holder_bar_empty():
-	#$RockThrower2.StartTimer()
-	pass
+	$RockThrower2.StartTimer()
 
 func _on_snake_meter_value_changed(value):
 	var target = int(((value)/100)*7) + 1
@@ -26,11 +24,13 @@ func _on_snake_meter_value_changed(value):
 
 
 func _on_charm_meter_value_changed(value):
-	pass # Replace with function body.
+	if value >= 10:
+		$RockThrower.StopTimer()
 
 
 func _on_place_holder_value_changed(value):
-	pass # Replace with function body.
+	if value >= 10:
+		$RockThrower2.StopTimer()
 
 
 func _on_snake_area_body_entered(body):

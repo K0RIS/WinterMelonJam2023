@@ -5,6 +5,7 @@ const SPEED = 800.0
 const JUMP_VELOCITY = -400.0
 
 @onready var rhythm_game = $Node/RhythmGame
+@onready var sprite = $AnimatedSprite2D
 
 var CurrentArea :String
 signal CallMeterManager(CurrentArea)
@@ -24,6 +25,10 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("move_left", "move_right")
+	if direction > 0:
+		sprite.flip_h = false
+	elif  direction < 0:
+		sprite.flip_h = true
 	if direction:
 		velocity.x = direction * SPEED
 	else:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl8tbmqlmed3s"]
+[gd_scene load_steps=6 format=3 uid="uid://dl8tbmqlmed3s"]
 
 [ext_resource type="Script" path="res://assets/scripts/EnvironmentalAreas.gd" id="1_ufwa4"]
 [ext_resource type="PackedScene" uid="uid://br3n44tptuhlc" path="res://assets/scenes/Snake.tscn" id="2_gsgy3"]
 [ext_resource type="Script" path="res://assets/scripts/Meter.gd" id="3_kv1wc"]
+[ext_resource type="PackedScene" uid="uid://dxynt56u880ym" path="res://assets/scenes/rock_thrower.tscn" id="4_nmovu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k3a8"]
 size = Vector2(320, 540)
@@ -66,7 +67,7 @@ offset_right = 177.5
 offset_bottom = 23.5
 grow_horizontal = 2
 grow_vertical = 2
-value = 50.0
+value = 1.0
 script = ExtResource("3_kv1wc")
 metadata/_edit_group_ = true
 
@@ -112,6 +113,13 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Place Holder"
 metadata/_edit_group_ = true
+
+[node name="RockThrower" parent="." instance=ExtResource("4_nmovu")]
+position = Vector2(6, 399)
+
+[node name="RockThrower2" parent="." instance=ExtResource("4_nmovu")]
+position = Vector2(488, 383)
+ToTheLeft = true
 
 [connection signal="body_entered" from="Node2D/SnakeArea" to="." method="_on_snake_area_body_entered"]
 [connection signal="body_exited" from="Node2D/SnakeArea" to="." method="_on_snake_area_body_exited"]

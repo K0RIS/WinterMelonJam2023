@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://d10fviu00m7jp"]
+[gd_scene load_steps=10 format=3 uid="uid://d10fviu00m7jp"]
 
 [ext_resource type="Script" path="res://assets/scripts/LevelBase.gd" id="1_02c7m"]
-[ext_resource type="PackedScene" uid="uid://dux2m33r514qd" path="res://ready_up_screen.tscn" id="2_edh7w"]
+[ext_resource type="PackedScene" uid="uid://bvlt82ssfcm2m" path="res://ready_up_screen.tscn" id="2_edh7w"]
 [ext_resource type="PackedScene" uid="uid://cvbr3f3sf14b3" path="res://assets/scenes/SnakeCharmer.tscn" id="3_mo7sc"]
 [ext_resource type="PackedScene" uid="uid://dl8tbmqlmed3s" path="res://assets/scenes/EnvironmentalAreas.tscn" id="4_05wpu"]
 
@@ -16,11 +16,13 @@ normal = Vector2(-1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mvwt3"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0airp"]
+size = Vector2(702, 49)
+
 [node name="Level" type="Node"]
 script = ExtResource("1_02c7m")
 
 [node name="ReadyUpScreen" parent="." instance=ExtResource("2_edh7w")]
-visible = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(960, 540)
@@ -52,10 +54,19 @@ position = Vector2(0, 490)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/StaticBody2D4"]
 shape = SubResource("WorldBoundaryShape2D_mvwt3")
 
+[node name="Area2D" type="Area2D" parent="Boundaries"]
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Area2D"]
+position = Vector2(474, 500)
+shape = SubResource("RectangleShape2D_0airp")
+
 [node name="EnvironmentalAreas" parent="." instance=ExtResource("4_05wpu")]
 
 [node name="SnakeCharmer" parent="." instance=ExtResource("3_mo7sc")]
-position = Vector2(348, 460)
+position = Vector2(347, 326)
+metadata/_edit_group_ = true
 
 [editable path="EnvironmentalAreas"]
 [editable path="SnakeCharmer"]

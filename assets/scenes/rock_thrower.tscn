@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqwg4678k7u0u"]
+[gd_scene load_steps=4 format=3 uid="uid://dxynt56u880ym"]
 
 [ext_resource type="Script" path="res://assets/sprites/Crowd.gd" id="1_0ww7j"]
-[ext_resource type="PackedScene" uid="uid://dms01mahnn4ma" path="res://assets/scenes/rock.tscn" id="2_lf18x"]
+[ext_resource type="PackedScene" uid="uid://b3eeq7btimrnc" path="res://assets/scenes/rock.tscn" id="2_lf18x"]
 [ext_resource type="AudioStream" uid="uid://b8rt1bjkl7igt" path="res://assets/sound/SoundEffects/Rock_Throw.wav" id="3_5yxbc"]
 
 [node name="RockThrower" type="Node2D"]

@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Rock
+
 var velocity :Vector2 = Vector2.ZERO
 var dir: Vector2 = Vector2.ZERO
 @export var speed: float = 1200
@@ -16,8 +18,12 @@ func _process(delta):
 
 
 func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	pass
+	queue_free()
 
 
 func _on_timer_timeout():
+	queue_free()
+
+
+func _on_area_2d_body_entered(body):
 	queue_free()
