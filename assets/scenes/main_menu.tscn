@@ -811,35 +811,35 @@ metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="Controls"]
 layout_mode = 2
-offset_left = 10.0
-offset_top = 9.0
-offset_right = 1453.0
-offset_bottom = 153.0
+offset_right = 942.0
+offset_bottom = 144.0
 theme = ExtResource("10_hk0rq")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 50
-text = " -Use the arrow keys for the flute
- notes when the colored 
-arrows fall on top of the buttons!"
+theme_override_font_sizes/font_size = 30
+autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="Controls"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 178.0
-offset_right = 937.0
-offset_bottom = 469.0
+offset_left = 4.0
+offset_right = 960.0
+offset_bottom = 291.0
 theme = ExtResource("10_hk0rq")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 50
-text = "-Use WSAD to move near unhappy
-crowd members to make them happy
-ANd Do not get hit by the rocks
--Get hit by 4 rocks you lose
--Do not let the snake get Unhappy
--Play the right notes next to the
-snake to make it happy"
+theme_override_font_sizes/font_size = 30
+text = "-Use the arrow keys to play your flute when note blocks align with your note gauge. Use the musical beat as a guide!
+
+-Use W/D to move
+
+-Keep all green bars full by standing next to them and matching your flute to the beat
+
+-Mistakes or neglect will upset the snake. Keep it happy or you will lose.
+
+-Neglecting the audience will cause them to throw rocks. If you are hit by 4 rocks, you will lose.
+
+-The green meters represent happiness"
+autowrap_mode = 3
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("23_ykfo5")
