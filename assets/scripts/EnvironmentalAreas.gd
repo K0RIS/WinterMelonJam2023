@@ -4,6 +4,9 @@ extends Node2D
 @onready var charm_meter = $Node2D/CrowdArea/CharmMeter
 @onready var placeholder_meter = $Node2D/PlaceholderArea/PlaceholderMeter
 
+@onready var crowd_one = $Node2D/CrowdArea/AnimatedSprite2D
+@onready var crowd_two = $Node2D/PlaceholderArea/PlaceholderMeter/AnimatedSprite2D2
+
 @onready var snake = $Node2D/SnakeArea/Snake
 
 func _on_snake_meter_bar_empty():
@@ -24,11 +27,19 @@ func _on_snake_meter_value_changed(value):
 
 
 func _on_charm_meter_value_changed(value):
+	var target = int(((value)/100)*3)
+	target = clampi(target, 0, 2)
+	crowd_one.play(str(target))
+	
 	if value >= 10:
 		$RockThrower.StopTimer()
 
 
 func _on_place_holder_value_changed(value):
+	var target = int(((value)/100)*3)
+	target = clampi(target, 0, 2)
+	crowd_two.play(str(target))
+	
 	if value >= 10:
 		$RockThrower2.StopTimer()
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl8tbmqlmed3s"]
+[gd_scene load_steps=7 format=3 uid="uid://dl8tbmqlmed3s"]
 
 [ext_resource type="Script" path="res://assets/scripts/EnvironmentalAreas.gd" id="1_ufwa4"]
 [ext_resource type="PackedScene" uid="uid://br3n44tptuhlc" path="res://assets/scenes/Snake.tscn" id="2_gsgy3"]
 [ext_resource type="Script" path="res://assets/scripts/Meter.gd" id="3_kv1wc"]
 [ext_resource type="PackedScene" uid="uid://dxynt56u880ym" path="res://assets/scenes/rock_thrower.tscn" id="4_nmovu"]
+[ext_resource type="PackedScene" uid="uid://djmbu4rbud5of" path="res://CrowdMember.tscn" id="4_v1eul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k3a8"]
 size = Vector2(320, 540)
@@ -50,7 +51,6 @@ text = "Snake"
 
 [node name="CrowdArea" type="Area2D" parent="Node2D"]
 position = Vector2(-320, 0)
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CrowdArea"]
 shape = SubResource("RectangleShape2D_4k3a8")
@@ -81,9 +81,12 @@ grow_vertical = 2
 text = "Charm"
 metadata/_edit_group_ = true
 
+[node name="AnimatedSprite2D" parent="Node2D/CrowdArea" instance=ExtResource("4_v1eul")]
+position = Vector2(-112, 210)
+frame_progress = 0.0
+
 [node name="PlaceholderArea" type="Area2D" parent="Node2D"]
 position = Vector2(320, 7.62939e-06)
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/PlaceholderArea"]
 shape = SubResource("RectangleShape2D_4k3a8")
@@ -102,7 +105,6 @@ grow_horizontal = 2
 grow_vertical = 2
 value = 50.0
 script = ExtResource("3_kv1wc")
-metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="Node2D/PlaceholderArea/PlaceholderMeter"]
 layout_mode = 1
@@ -113,6 +115,11 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Place Holder"
 metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D2" parent="Node2D/PlaceholderArea/PlaceholderMeter" instance=ExtResource("4_v1eul")]
+position = Vector2(289.5, 233.5)
+frame_progress = 0.0
+flip_h = true
 
 [node name="RockThrower" parent="." instance=ExtResource("4_nmovu")]
 position = Vector2(6, 399)
