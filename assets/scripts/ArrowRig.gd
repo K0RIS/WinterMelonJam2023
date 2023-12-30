@@ -130,5 +130,8 @@ func init_note(new_note: Note, sec_per_beat: float):
 			new_note.note_texture.texture = new_note.notes[3]
 			new_note.modulate = new_note.colors[3]
 			new_note.global_position = spawn_lane_4.global_position
+	update_note_vel(new_note, sec_per_beat)
+
+func update_note_vel(new_note: Note, sec_per_beat: float):
 	new_note.velocity = (1 / notes_per_beat) * (get_note_dist(new_note) + 100) / sec_per_beat
 

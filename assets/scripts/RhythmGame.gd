@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var bpm: float = 90
+var base_bpm = 0
 @export var measures: int = 8
 @onready var principal_track = $PrincipalTrack
 @onready var flute_track = $FluteTrack
@@ -21,13 +22,12 @@ var start = 0
 signal beat
 
 func get_faster():
-	$PrincipalTrack.pitch_scale += 0.1
-	$FluteTrack.pitch_scale += 0.1
-	$ComboTrack.pitch_scale += 0.1
-	print("FASTER!")
+	$PrincipalTrack.pitch_scale += 0.25
+	$FluteTrack.pitch_scale += 0.25
+	$ComboTrack.pitch_scale += 0.25
+	
 
 func start_track():
-	#$Timer.start()
 	principal_track.play(start)
 	flute_track.play(start)
 	combo_track.play(start)
@@ -36,6 +36,7 @@ func start_track():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_sec_per_beat = Engine.physics_ticks_per_second / (bpm * beat_divisor)
+	base_bpm = bpm
 	self.position = $"../..".position
 
 
