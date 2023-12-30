@@ -5,6 +5,8 @@ const MAX_COMBO = 10
 var shake_open = "[shake rate=20.0 level=5 connected=1]"
 var shake_close = "[/shake]"
 
+var speed_mult_scalar = 1
+
 @onready var wrong_note_player = $WrongNotePlayer
 
 const WRONG_NOTE = [
@@ -97,7 +99,7 @@ func add_points(Dist):
 		add_to_combo()
 		
 	
-	current_score += current_combo * 100
+	current_score += current_combo * speed_mult_scalar * 100 
 	if current_combo >= 10:
 		score.text = shake_open + str(current_score) + shake_close
 	else:

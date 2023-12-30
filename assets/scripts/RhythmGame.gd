@@ -25,6 +25,7 @@ func get_faster():
 	$PrincipalTrack.pitch_scale += 0.25
 	$FluteTrack.pitch_scale += 0.25
 	$ComboTrack.pitch_scale += 0.25
+	ScoreManager.speed_mult_scalar = $PrincipalTrack.pitch_scale
 	
 
 func start_track():
