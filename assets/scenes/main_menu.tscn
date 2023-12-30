@@ -1,8 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://bjve31n4jioao"]
+[gd_scene load_steps=24 format=3 uid="uid://bjve31n4jioao"]
 
 [ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_m3phr"]
-[ext_resource type="Texture2D" uid="uid://dv1pdie8igfsf" path="res://assets/UiAsset/cyan_square_30.png" id="2_1onor"]
-[ext_resource type="Texture2D" uid="uid://dc6tibj77kmvf" path="res://assets/UiAsset/cyan_pressed_square_29.png" id="3_76isd"]
+[ext_resource type="Texture2D" uid="uid://bqx06lfcumfn" path="res://assets/sprites/buttons/button_right.png" id="2_77qa7"]
+[ext_resource type="Texture2D" uid="uid://b6kdr7lp6bray" path="res://assets/sprites/buttons/button_right_pressed.png" id="3_0u4fl"]
 [ext_resource type="Texture2D" uid="uid://ca8yhvr7ribg" path="res://assets/UiAsset/cyan_square_7.png" id="4_llu73"]
 [ext_resource type="Texture2D" uid="uid://b7o72dlxkxxn" path="res://assets/UiAsset/cyan_pressed_square_6.png" id="5_b7ybk"]
 [ext_resource type="Script" path="res://assets/scripts/Settings Ui.gd" id="6_hpvos"]
@@ -14,6 +14,10 @@
 [ext_resource type="AudioStream" uid="uid://cdu5g04g7epqy" path="res://assets/sound/SoundEffects/Menu_Select.wav" id="13_b1tm6"]
 [ext_resource type="Texture2D" uid="uid://b500vmsrqgkv" path="res://assets/UiAsset/green_right_slider.png" id="13_pornp"]
 [ext_resource type="Script" path="res://assets/scripts/Level Ui.gd" id="14_ncv2x"]
+[ext_resource type="Texture2D" uid="uid://dwiju0fov8nv5" path="res://assets/sprites/buttons/button_up.png" id="15_fmwas"]
+[ext_resource type="Texture2D" uid="uid://cg4khuj77w6xh" path="res://assets/sprites/buttons/button_up_pressed.png" id="16_7tpc5"]
+[ext_resource type="Texture2D" uid="uid://c28lfo3hm582w" path="res://assets/sprites/buttons/button_left.png" id="17_47xhd"]
+[ext_resource type="Texture2D" uid="uid://dqyr5ea1l5age" path="res://assets/sprites/buttons/button_left_pressed.png" id="18_ag4yr"]
 
 [sub_resource type="Animation" id="Animation_scoy6"]
 length = 0.001
@@ -180,8 +184,8 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-texture_normal = ExtResource("2_1onor")
-texture_pressed = ExtResource("3_76isd")
+texture_normal = ExtResource("2_77qa7")
+texture_pressed = ExtResource("3_0u4fl")
 stretch_mode = 4
 metadata/_edit_group_ = true
 
@@ -427,15 +431,15 @@ metadata/_edit_group_ = true
 [node name="level1" type="TextureButton" parent="Level Ui/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-texture_normal = ExtResource("2_1onor")
-texture_pressed = ExtResource("3_76isd")
+texture_normal = ExtResource("15_fmwas")
+texture_pressed = ExtResource("16_7tpc5")
 stretch_mode = 4
 
 [node name="Level2" type="TextureButton" parent="Level Ui/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-texture_normal = ExtResource("2_1onor")
-texture_pressed = ExtResource("3_76isd")
+texture_normal = ExtResource("17_47xhd")
+texture_pressed = ExtResource("18_ag4yr")
 stretch_mode = 4
 
 [connection signal="button_down" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer/Levels" to="." method="SoundEffect"]

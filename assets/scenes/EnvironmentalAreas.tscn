@@ -1,14 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl8tbmqlmed3s"]
+[gd_scene load_steps=10 format=3 uid="uid://dl8tbmqlmed3s"]
 
 [ext_resource type="Script" path="res://assets/scripts/EnvironmentalAreas.gd" id="1_ufwa4"]
 [ext_resource type="PackedScene" uid="uid://br3n44tptuhlc" path="res://assets/scenes/Snake.tscn" id="2_gsgy3"]
 [ext_resource type="Texture2D" uid="uid://gyru0gcwiol6" path="res://assets/sprites/circle.svg" id="3_4uf4f"]
+[ext_resource type="Shader" path="res://assets/scenes/Note.gdshader" id="3_36evs"]
 [ext_resource type="Script" path="res://assets/scripts/Meter.gd" id="3_kv1wc"]
 [ext_resource type="PackedScene" uid="uid://dxynt56u880ym" path="res://assets/scenes/rock_thrower.tscn" id="4_nmovu"]
 [ext_resource type="PackedScene" uid="uid://djmbu4rbud5of" path="res://CrowdMember.tscn" id="4_v1eul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4k3a8"]
 size = Vector2(320, 540)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1rxcw"]
+shader = ExtResource("3_36evs")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 1.25
+shader_parameter/pattern = 2
+shader_parameter/inside = true
+shader_parameter/add_margins = false
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [node name="EnvironmentalAreas" type="Node2D"]
 script = ExtResource("1_ufwa4")
@@ -26,6 +36,7 @@ position = Vector2(0, 106)
 
 [node name="SnakeMeter" type="TextureProgressBar" parent="Node2D/SnakeArea" groups=["SnakeMeter"]]
 modulate = Color(0.5, 100, 0.5, 1)
+material = SubResource("ShaderMaterial_1rxcw")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -56,6 +67,7 @@ frame_progress = 0.0
 
 [node name="CharmMeter" type="TextureProgressBar" parent="Node2D/CrowdArea"]
 modulate = Color(0.5, 100, 0.5, 1)
+material = SubResource("ShaderMaterial_1rxcw")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -85,6 +97,7 @@ flip_h = true
 
 [node name="PlaceholderMeter" type="TextureProgressBar" parent="Node2D/PlaceholderArea"]
 modulate = Color(0.5, 100, 0.5, 1)
+material = SubResource("ShaderMaterial_1rxcw")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

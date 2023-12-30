@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://cdw35jnjyujwg"
+uid="uid://colnwemsukgp3"
 path="res://.godot/imported/Final_Principal.ogg-7261ae640335713f8a37ad344cef16b9.oggvorbisstr"
 
 [deps]
@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/Final_Principal.ogg-7261ae640335713f8a37ad344
 
 [params]
 
-loop=false
-loop_offset=0
+loop=true
+loop_offset=10.181
 bpm=0
 beat_count=0
 bar_beats=4

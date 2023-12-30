@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ch3tr2o6drtbt"]
+[gd_scene load_steps=13 format=3 uid="uid://8e6kl57b3mv0"]
 
 [ext_resource type="Script" path="res://FailState.gd" id="1_ffv0f"]
 [ext_resource type="Texture2D" uid="uid://dv1pdie8igfsf" path="res://assets/UiAsset/cyan_square_30.png" id="2_brc45"]
@@ -41,11 +41,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_0hcht"]
-resource_name = "idle"
-length = 3.0
-loop_mode = 1
-
 [sub_resource type="Animation" id="Animation_8jjec"]
 resource_name = "failstate"
 tracks/0/type = "value"
@@ -60,6 +55,11 @@ tracks/0/keys = {
 "update": 1,
 "values": [true]
 }
+
+[sub_resource type="Animation" id="Animation_0hcht"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nfs0x"]
 _data = {

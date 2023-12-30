@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://bxy5wjund6ow1"
+uid="uid://bjr3u524lnodl"
 path="res://.godot/imported/Final_Ney.ogg-ae54e53911076ff61653d75e792da781.oggvorbisstr"
 
 [deps]
@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/Final_Ney.ogg-ae54e53911076ff61653d75e792da78
 
 [params]
 
-loop=false
-loop_offset=0
+loop=true
+loop_offset=10.181
 bpm=0
 beat_count=0
 bar_beats=4
