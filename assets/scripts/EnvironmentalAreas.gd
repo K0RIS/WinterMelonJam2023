@@ -13,11 +13,10 @@ signal snake_lose
 
 func _on_snake_meter_bar_empty():
 	emit_signal("snake_lose")
-
+	$"../LoseScreen/LostSound".play()
 
 func _on_charm_meter_bar_empty():
 	$RockThrower.StartTimer()
-
 
 func _on_place_holder_bar_empty():
 	$RockThrower2.StartTimer()

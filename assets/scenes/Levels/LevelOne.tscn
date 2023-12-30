@@ -33,3 +33,4 @@ process_mode = 3
 [editable path="EnvironmentalAreas"]
 [editable path="SnakeCharmer"]
 [editable path="SnakeCharmer/Node/RhythmGame"]
+[editable path="LoseScreen"]
