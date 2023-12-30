@@ -2,6 +2,11 @@ extends CanvasLayer
 
 const MAX_COMBO = 10
 
+var shake_open = "[shake rate=20.0 level=5 connected=1]"
+var shake_close = "[/shake]"
+
+var speed_mult_scalar = 1
+
 @onready var wrong_note_player = $WrongNotePlayer
 
 const WRONG_NOTE = [
@@ -52,6 +57,7 @@ func break_combo():
 		
 	current_combo = 0
 	combo.text = "x" + str(current_combo)
+	score.text = str(current_score)
 	_target_combo_volume_db = -80
 	AudioServer.set_bus_mute(bus_indices.Ney, true)
 	
@@ -64,7 +70,11 @@ func add_to_combo():
 		_target_combo_volume_db = 0
 		wrong_note_player.stream = WRONG_NOTE[8]
 		wrong_note_player.play()
-	combo.text = "x" + str(current_combo)
+	if current_combo >= 10:	
+		combo.text = shake_open + "x" + str(current_combo) + shake_close
+	else:
+		combo.text = "x" + str(current_combo)
+		score.text = str(current_score)
 	AudioServer.set_bus_mute(bus_indices.Ney, false)
 
 
@@ -89,8 +99,11 @@ func add_points(Dist):
 		add_to_combo()
 		
 	
-	current_score += current_combo * 100
-	score.text = str(current_score)
+	current_score += current_combo * speed_mult_scalar * 100 
+	if current_combo >= 10:
+		score.text = shake_open + str(current_score) + shake_close
+	else:
+		score.text = str(current_score)
 
 func wrong_note():
 	wrong_note_player.stream = WRONG_NOTE[randi() % 8]

@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var bpm: float = 90
+var base_bpm = 0
 @export var measures: int = 8
 @onready var principal_track = $PrincipalTrack
 @onready var flute_track = $FluteTrack
@@ -15,12 +16,19 @@ var _sec_per_beat = 0
 var _current_time: float = 0.0
 var _current_beat: int = 0
 var _last_beat: int = 0
+var _last_song_pos = 0
 var start = 0
 
 signal beat
 
+func get_faster():
+	$PrincipalTrack.pitch_scale += 0.25
+	$FluteTrack.pitch_scale += 0.25
+	$ComboTrack.pitch_scale += 0.25
+	ScoreManager.speed_mult_scalar = $PrincipalTrack.pitch_scale
+	
+
 func start_track():
-	#$Timer.start()
 	principal_track.play(start)
 	flute_track.play(start)
 	combo_track.play(start)
@@ -29,6 +37,7 @@ func start_track():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_sec_per_beat = Engine.physics_ticks_per_second / (bpm * beat_divisor)
+	base_bpm = bpm
 	self.position = $"../..".position
 
 
@@ -38,7 +47,10 @@ func _time_to_beat(song_position: float):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	_current_time = principal_track.get_playback_position() 
+	_current_time = principal_track.get_playback_position()
+	if _current_time < _last_song_pos:
+		get_faster()
+	_last_song_pos = _current_time
 	_current_time += AudioServer.get_time_since_last_mix()
 	_current_time -= AudioServer.get_output_latency()
 	_current_beat = _time_to_beat(_current_time)

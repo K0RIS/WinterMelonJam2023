@@ -10,3 +10,4 @@ func start_game():
 	ScoreManager.score.text = "0"
 	ScoreManager.combo.text = "x0"
 	snake_charmer.rhythm_game.start_track()
+	

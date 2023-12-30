@@ -1,21 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmebqeqnbdcur"]
+[gd_scene load_steps=5 format=3 uid="uid://bmebqeqnbdcur"]
 
 [ext_resource type="PackedScene" uid="uid://d10fviu00m7jp" path="res://assets/scenes/LevelBase.tscn" id="1_yo8sc"]
-[ext_resource type="PackedScene" uid="uid://ch3tr2o6drtbt" path="res://FailState.tscn" id="2_p36mt"]
 [ext_resource type="AudioStream" uid="uid://64qx3f08yj11" path="res://assets/sound/music/level_one/Level_1_Principal.ogg" id="2_tosxs"]
 [ext_resource type="AudioStream" uid="uid://q2vfx5i32n2f" path="res://assets/sound/music/level_one/Level_1_Ney.ogg" id="3_iv3it"]
 [ext_resource type="AudioStream" uid="uid://2te1ssqxhsuh" path="res://assets/sound/music/level_one/Level_1_Combo.ogg" id="4_w60ci"]
-[ext_resource type="Texture2D" uid="uid://m8afyailm271" path="res://assets/sprites/streetBG.png" id="5_k7m7y"]
 
 [node name="Level" instance=ExtResource("1_yo8sc")]
 
-[node name="failState" parent="." index="0" instance=ExtResource("2_p36mt")]
-visible = false
-
-[node name="TextureRect" parent="." index="2"]
-texture = ExtResource("5_k7m7y")
-
-[node name="SnakeCharmer" parent="." index="5"]
+[node name="SnakeCharmer" parent="." index="4"]
 position = Vector2(298, 405)
 
 [node name="RhythmGame" parent="SnakeCharmer/Node" index="0"]
@@ -29,8 +21,6 @@ stream = ExtResource("3_iv3it")
 
 [node name="ComboTrack" parent="SnakeCharmer/Node/RhythmGame" index="2"]
 stream = ExtResource("4_w60ci")
-
-[connection signal="died" from="SnakeCharmer" to="failState" method="FailState"]
 
 [editable path="EnvironmentalAreas"]
 [editable path="SnakeCharmer"]

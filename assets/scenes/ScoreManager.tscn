@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://assets/scripts/ScoreManager.gd" id="1_7kqd2"]
 
 [node name="Ui" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_7kqd2")
 
 [node name="Status" type="Label" parent="."]
@@ -16,24 +15,34 @@ offset_bottom = 55.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 0)
 offset_right = 127.0
 offset_bottom = 55.0
 theme_override_constants/separation = -40
 
-[node name="Score" type="Label" parent="VBoxContainer"]
+[node name="Score" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 60
-text = "0"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[shake rate=20.0 level=5 connected=1]0[/shake]"
+fit_content = true
+autowrap_mode = 0
 
-[node name="Combo" type="Label" parent="VBoxContainer"]
+[node name="Combo" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
-text = "x0"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[shake rate=20.0 level=5 connected=1]x0[/shake]"
+fit_content = true
 
 [node name="WrongNotePlayer" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"

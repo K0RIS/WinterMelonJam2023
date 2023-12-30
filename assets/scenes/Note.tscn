@@ -1,8 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://k3uboy304rg2"]
+[gd_scene load_steps=6 format=3 uid="uid://k3uboy304rg2"]
 
 [ext_resource type="Script" path="res://assets/scripts/Note.gd" id="2_6msk5"]
 [ext_resource type="Shader" path="res://assets/scenes/Note.gdshader" id="2_8brwn"]
 [ext_resource type="Texture2D" uid="uid://bkflaq225r2e8" path="res://assets/sprites/buttons/left.png" id="2_51owk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_irueo"]
+shader = ExtResource("2_8brwn")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tfyr6"]
 shader = ExtResource("2_8brwn")
@@ -14,6 +23,7 @@ shader_parameter/add_margins = false
 shader_parameter/number_of_images = Vector2(1, 1)
 
 [node name="Note" type="Node2D" groups=["note"]]
+material = SubResource("ShaderMaterial_irueo")
 script = ExtResource("2_6msk5")
 
 [node name="NoteTexture" type="TextureRect" parent="."]

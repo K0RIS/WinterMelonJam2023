@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dplk4kucvjwiy" path="res://assets/UiAsset/cyan_square_3.png" id="7_yaxq6"]
 [ext_resource type="Texture2D" uid="uid://b6brbbhb8byv2" path="res://assets/UiAsset/cyan_pressed_square_2.png" id="8_3v8t0"]
 [ext_resource type="Theme" uid="uid://b33upsigydajd" path="res://assets/UiAsset/PixelFont.tres" id="10_hk0rq"]
-[ext_resource type="AudioStream" uid="uid://c8pxyo87gn858" path="res://assets/sound/SoundEffects/click-menu-app-147357.mp3" id="13_annic"]
+[ext_resource type="AudioStream" uid="uid://cdu5g04g7epqy" path="res://assets/sound/SoundEffects/Menu_Select.wav" id="13_b1tm6"]
 [ext_resource type="Texture2D" uid="uid://b500vmsrqgkv" path="res://assets/UiAsset/green_right_slider.png" id="13_pornp"]
 [ext_resource type="Script" path="res://assets/scripts/Level Ui.gd" id="14_ncv2x"]
 
@@ -352,7 +352,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_annic")
+stream = ExtResource("13_b1tm6")
 pitch_scale = 0.95
 bus = &"SFX"
 
