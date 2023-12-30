@@ -62,7 +62,6 @@ func _on_rock_hit_box_area_shape_entered(area_rid, area, area_shape_index, local
 
 func  CheckHealth():
 	if CurrentHealth <= 0:
-		print("you lost due lost of health")
 		emit_signal("died")
 
 func _on_hit_timer_timeout():

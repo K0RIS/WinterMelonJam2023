@@ -9,8 +9,10 @@ extends Node2D
 
 @onready var snake = $Node2D/SnakeArea/Snake
 
+signal snake_lose
+
 func _on_snake_meter_bar_empty():
-	pass # Replace with function body.
+	emit_signal("snake_lose")
 
 
 func _on_charm_meter_bar_empty():

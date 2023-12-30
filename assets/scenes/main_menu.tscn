@@ -410,16 +410,6 @@ theme = ExtResource("10_hk0rq")
 theme_override_font_sizes/font_size = 50
 text = "Level 2"
 
-[node name="Label3" type="Label" parent="Level Ui"]
-layout_mode = 2
-offset_left = 348.0
-offset_top = 340.0
-offset_right = 578.0
-offset_bottom = 409.0
-theme = ExtResource("10_hk0rq")
-theme_override_font_sizes/font_size = 50
-text = "Level 3"
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Level Ui"]
 layout_mode = 1
 anchors_preset = 15
@@ -448,13 +438,6 @@ texture_normal = ExtResource("2_1onor")
 texture_pressed = ExtResource("3_76isd")
 stretch_mode = 4
 
-[node name="Level3" type="TextureButton" parent="Level Ui/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-texture_normal = ExtResource("2_1onor")
-texture_pressed = ExtResource("3_76isd")
-stretch_mode = 4
-
 [connection signal="button_down" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer/Levels" to="." method="SoundEffect"]
 [connection signal="pressed" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer/Levels" to="." method="_on_levels_pressed"]
 [connection signal="button_down" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer2/Settings" to="." method="SoundEffect"]
@@ -472,5 +455,3 @@ stretch_mode = 4
 [connection signal="pressed" from="Level Ui/VBoxContainer/level1" to="Level Ui" method="_on_level_1_pressed"]
 [connection signal="button_down" from="Level Ui/VBoxContainer/Level2" to="." method="SoundEffect"]
 [connection signal="pressed" from="Level Ui/VBoxContainer/Level2" to="Level Ui" method="_on_level_2_pressed"]
-[connection signal="button_down" from="Level Ui/VBoxContainer/Level3" to="." method="SoundEffect"]
-[connection signal="pressed" from="Level Ui/VBoxContainer/Level3" to="Level Ui" method="_on_level_3_pressed"]

@@ -22,9 +22,9 @@ var start = 0
 signal beat
 
 func get_faster():
-	$PrincipalTrack.pitch_scale += 0.25
-	$FluteTrack.pitch_scale += 0.25
-	$ComboTrack.pitch_scale += 0.25
+	$PrincipalTrack.pitch_scale += 0.5
+	$FluteTrack.pitch_scale += 0.5
+	$ComboTrack.pitch_scale += 0.5
 	ScoreManager.speed_mult_scalar = $PrincipalTrack.pitch_scale
 	
 
@@ -33,6 +33,10 @@ func start_track():
 	flute_track.play(start)
 	combo_track.play(start)
 
+func stop_track():
+	principal_track.stop()
+	flute_track.stop()
+	combo_track.stop()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

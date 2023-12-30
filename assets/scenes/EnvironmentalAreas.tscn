@@ -23,7 +23,7 @@ shape = SubResource("RectangleShape2D_4k3a8")
 [node name="Snake" parent="Node2D/SnakeArea" instance=ExtResource("2_gsgy3")]
 position = Vector2(0, 106)
 
-[node name="SnakeMeter" type="ProgressBar" parent="Node2D/SnakeArea"]
+[node name="SnakeMeter" type="ProgressBar" parent="Node2D/SnakeArea" groups=["SnakeMeter"]]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
