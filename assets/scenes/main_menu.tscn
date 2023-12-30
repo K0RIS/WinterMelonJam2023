@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bjve31n4jioao"]
+[gd_scene load_steps=61 format=3 uid="uid://bjve31n4jioao"]
 
 [ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_m3phr"]
 [ext_resource type="Texture2D" uid="uid://m8afyailm271" path="res://assets/sprites/streetBG.png" id="2_0scuu"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://c28lfo3hm582w" path="res://assets/sprites/buttons/button_left.png" id="17_47xhd"]
 [ext_resource type="Texture2D" uid="uid://dqyr5ea1l5age" path="res://assets/sprites/buttons/button_left_pressed.png" id="18_ag4yr"]
 [ext_resource type="Texture2D" uid="uid://rxkkfhnfw6lp" path="res://assets/sprites/basket.png" id="22_85a2j"]
+[ext_resource type="AudioStream" uid="uid://colnwemsukgp3" path="res://assets/sound/music/level_two/Final_Principal.ogg" id="23_ykfo5"]
 
 [sub_resource type="Animation" id="Animation_scoy6"]
 length = 0.001
@@ -839,6 +840,11 @@ ANd Do not get hit by the rocks
 -Do not let the snake get Unhappy
 -Play the right notes next to the
 snake to make it happy"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_ykfo5")
+autoplay = true
+bus = &"Music"
 
 [connection signal="button_down" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer/Levels" to="." method="SoundEffect"]
 [connection signal="pressed" from="MainMenmuButtons/CenterContainer/HBoxContainer/MainButtons/VBoxContainer/Levels" to="." method="_on_levels_pressed"]

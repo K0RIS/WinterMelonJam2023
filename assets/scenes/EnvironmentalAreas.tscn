@@ -32,9 +32,6 @@ position = Vector2(480, 270)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/SnakeArea"]
 shape = SubResource("RectangleShape2D_4k3a8")
 
-[node name="Snake" parent="Node2D/SnakeArea" instance=ExtResource("2_gsgy3")]
-position = Vector2(0, 106)
-
 [node name="SnakeMeter" type="TextureProgressBar" parent="Node2D/SnakeArea" groups=["SnakeMeter"]]
 modulate = Color(0.5, 100, 0.5, 1)
 material = SubResource("ShaderMaterial_1rxcw")
@@ -56,6 +53,9 @@ texture_under = ExtResource("4_1akjv")
 texture_progress = ExtResource("3_4uf4f")
 script = ExtResource("3_kv1wc")
 metadata/_edit_group_ = true
+
+[node name="Snake" parent="Node2D/SnakeArea" instance=ExtResource("2_gsgy3")]
+position = Vector2(0, 106)
 
 [node name="CrowdArea" type="Area2D" parent="Node2D"]
 position = Vector2(-320, 0)
