@@ -87,6 +87,7 @@ stream = ExtResource("7_0d6pu")
 stream = ExtResource("8_6y3iv")
 
 [node name="LoseScreen" parent="." instance=ExtResource("9_4xrr3")]
+visible = false
 
 [connection signal="finished" from="SnakeCharmer/Node/RhythmGame/PrincipalTrack" to="." method="_on_principal_track_finished"]
 

@@ -1,5 +1,4 @@
-
-extends ProgressBar
+extends TextureProgressBar
 
 @export var decrement_velocity = 3
 @export var increment_velocity = 1
