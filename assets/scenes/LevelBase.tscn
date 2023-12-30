@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://d10fviu00m7jp"]
+[gd_scene load_steps=11 format=3 uid="uid://d10fviu00m7jp"]
 
 [ext_resource type="Script" path="res://assets/scripts/LevelBase.gd" id="1_02c7m"]
 [ext_resource type="PackedScene" uid="uid://bvlt82ssfcm2m" path="res://ready_up_screen.tscn" id="2_edh7w"]
 [ext_resource type="PackedScene" uid="uid://cvbr3f3sf14b3" path="res://assets/scenes/SnakeCharmer.tscn" id="3_mo7sc"]
+[ext_resource type="Texture2D" uid="uid://m8afyailm271" path="res://assets/sprites/streetBG.png" id="3_ysgir"]
 [ext_resource type="PackedScene" uid="uid://dl8tbmqlmed3s" path="res://assets/scenes/EnvironmentalAreas.tscn" id="4_05wpu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6vlu4"]
@@ -29,6 +30,7 @@ visible = true
 custom_minimum_size = Vector2(960, 540)
 offset_right = 960.0
 offset_bottom = 540.0
+texture = ExtResource("3_ysgir")
 
 [node name="Boundaries" type="Node" parent="."]
 
@@ -66,7 +68,7 @@ shape = SubResource("RectangleShape2D_0airp")
 [node name="EnvironmentalAreas" parent="." instance=ExtResource("4_05wpu")]
 
 [node name="SnakeCharmer" parent="." instance=ExtResource("3_mo7sc")]
-position = Vector2(347, 326)
+position = Vector2(296, 433)
 metadata/_edit_group_ = true
 
 [connection signal="finished" from="SnakeCharmer/Node/RhythmGame/PrincipalTrack" to="." method="_on_principal_track_finished"]
